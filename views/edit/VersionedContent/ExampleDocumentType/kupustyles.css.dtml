@@ -1,0 +1,46 @@
+@import url(<dtml-var "get_root().service_views.Silva.edit.VersionedContent['kupustyles.css'].absolute_url()">);
+
+/*****************************************************************************
+ *
+ * Kupu common styles
+ *
+ * Copyright (c) 2003 Kupu Contributors. See CREDITS.txt
+ *
+ * Instead of customizing this file, it is recommended to customize
+ * kupucustom.css. Feel free to use whole or parts of this for your
+ * own designs, but give credit where credit is due.
+ *
+ *****************************************************************************/
+
+/* import the Silva kupustyles.css, and just override those 
+   items specific to SilvaNews */
+
+<dtml-let last_modified="_.DateTime()-14"
+          expires="_.DateTime()+7"
+          root_url="get_root_url()">
+<dtml-call "REQUEST.RESPONSE.setHeader( 'Content-Type', 'text/css' )">
+<dtml-call "REQUEST.RESPONSE.setHeader( 'Last-Modified', last_modified.toZone('GMT').rfc822() )">
+<dtml-call "REQUEST.RESPONSE.setHeader( 'Cache-Control', 'max-age=36000, must-revalidate' )">
+<dtml-call "REQUEST.RESPONSE.setHeader( 'Expires', expires.toZone('GMT').rfc822() )">
+
+#kupu-toolbox-properties {
+  display: block;
+}
+#kupu-toolbox-extsource,
+#kupu-toolbox-tables,
+#kupu-toolbox-citation,
+#kupu-toolbox-toc,
+#kupu-toolbox-images,
+#kupu-toolbox-indexes,
+#kupu-toolbox-abbr {
+	display:none;
+}
+
+/* will need to override uncomment this when news-images
+   are included in the release
+#kupu-toolbox-news-images {
+  display: block;
+}
+*/
+
+</dtml-let>

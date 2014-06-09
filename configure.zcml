@@ -1,0 +1,34 @@
+<configure
+	xmlns="http://namespaces.zope.org/zope"
+	xmlns:silva="http://infrae.com/ns/silvaconf"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
+
+
+  <silva:extension
+    name="SilvaUCLExampleContentTypes" 
+    title="Silva UCL Example Content Types"
+    />
+
+<!--  <silva:extension
+    name="SilvaUCLExampleContentTypes" 
+    title="Silva UCL Example Content Types"
+    depends="SilvaDocument"
+    />-->
+  
+
+  <silva:content
+    extension_name="SilvaUCLExampleContentTypes"
+    content=".content.ExampleFolderType.ExampleFolderType"
+    icon="www/pictures-stack.png"
+    />
+
+  <silva:versionedcontent
+    extension_name="SilvaUCLExampleContentTypes"
+    content=".content.ExampleDocumentType.ExampleDocumentType"
+    version=".content.ExampleDocumentType.ExampleDocumentTypeVersion"
+    icon="www/exclamation-diamond-frame.png"
+    /> 
+
+
+</configure>
