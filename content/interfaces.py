@@ -1,16 +1,9 @@
-from Products.Silva.interfaces import IVersionedContent, IVersion, IContainer
+from Products.Silva.interfaces import IVersionedContent, IVersion, IContainer, IContent
 
-class IExampleDocumentType(IVersionedContent):
-	"""interface for ExampleDocumentType"""
+class ICourseDate(IContent):
+    """Interface for Course Date object"""
+    pass
 
-class IExampleDocumentTypeVersion(IVersion):
-	"""interface for version of an ExampleDocumentType"""
 
-class IExampleFolderType(IContainer):
-	"""interface for ExampleFolderType"""
-
-class ICourseDateType(IVersion):
-      """Interface for Course Date object"""
-
-class IReviewType(IVersion):
-     """Interface for Review object"""
+#class IReviewType(IVersion):
+#     """Interface for Review object"""
