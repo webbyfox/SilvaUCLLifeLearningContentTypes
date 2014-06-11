@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html tal:omit-tag=""
+  lang="en"
+  xml:lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:notal="http://www.infrae.com/silva/notal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="silva_news"
+  tal:define="
+    maintitlecolspan string:2;
+    model request/model;
+">
+
+<metal:use-macro use-macro="here/macro_edit/macros/editor">
+
+ <metal:fill-editor-slot fill-slot="main">
+  <metal:use-macro use-macro="here/macro_edit/macros/three-col-layout">
+   <metal:slot fill-slot="main-body">
+    <tal:def define="fields context/form/get_fields">
+     <tr>
+      <th width="45%" i18n:translate="">attributes</th>
+      <th i18n:translate="">content</th>
+     </tr>
+
+     <tal:repeat repeat="field fields">
+     <tal:define define="iterate repeat/field/odd">
+     <tr tal:attributes="class python:iterate and 'odd unblock' or 'even unblock'">
+       <td class="designator">
+         <label tal:content="structure field/title"
+           tal:attributes="for field/id">
+           title
+         </label><span class="warning"
+           tal:condition="field/is_required">*</span>
+         <p style="display:inline"
+           tal:condition="not:field/is_required">
+           (optional)
+         </p>
+         <p tal:condition="field/description" 
+            tal:content="field/description" />
+       </td>
+       <td class="field">
+         <input tal:replace="structure python:field.render_from_request(request)" />
+       </td>
+     </tr>
+     </tal:define>
+     </tal:repeat>
+    </tal:def>
+   </metal:slot>
+
+    <metal:fill-main-foot fill-slot="main-foot">
+     <tr class="controls">
+       <td class="align-right"
+           tal:attributes="colspan maintitlecolspan">
+         <input class="button"
+           type="submit"
+           name="submit:method"
+           value="save"
+           title="access key: alt-s"
+           accesskey="s"
+           i18n:attributes="title;value"
+         />
+       </td>
+     </tr>
+    </metal:fill-main-foot>
+      <div class="info" metal:fill-slot="right-column">
+        <h3 i18n:translate="">
+         <img tal:replace="structure icon" i18n:name="icon"/>
+         Syndication Feed for 
+         <span i18n:name="meta_type" 
+               tal:content="python:model.meta_type.replace('Silva ','')" />
+       </h3>
+        <p i18n:translate="">
+          A syndication feed is available
+          in either RSS or Atom format.
+        </p>
+        <p>
+          <strong i18n:translate="">
+          The URL for the RSS feed is: 
+          </strong><br />
+          <a tal:attributes="href string:${model/absolute_url}/rss.xml">
+            <span tal:replace="python:'%s /rss.xml' % ' /'.join(model.absolute_url().split('/')).replace('http: / /', 'http://')">feed</span>
+          </a>
+        </p>
+        <p>
+          <strong i18n:translate="">
+          The URL for the Atom feed is: 
+          </strong><br />
+          <a tal:attributes="href string:${model/absolute_url}/atom.xml">
+            <span tal:replace="python:'%s /atom.xml' % ' /'.join(model.absolute_url().split('/')).replace('http: / /', 'http://')">feed</span>
+          </a>
+        </p>
+      </div>
+  </metal:use-macro>
+ </metal:fill-editor-slot>
+
+</metal:use-macro>
+
+</html>

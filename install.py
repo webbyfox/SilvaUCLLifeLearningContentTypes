@@ -1,7 +1,7 @@
-"""Install for SilvaUCLExampleContentTypes
+"""Install for SilvaUCLLifeLearningContentTypes
 """
 from os import path
-from Globals import package_home
+from Globals import package_home 
 
 from Products.Silva.install import add_fss_directory_view
 from Products.Silva import roleinfo
@@ -12,7 +12,7 @@ metadatasets = []
 
 def install(root):
     # create the core views from filesystem
-    add_fss_directory_view(root.service_views, 'SilvaUCLExampleContentTypes', __file__, 'views')
+    add_fss_directory_view(root.service_views, 'SilvaUCLLifeLearningContentTypes', __file__, 'views')
 
     # also register views
     registerViews(root.service_view_registry)
@@ -23,16 +23,11 @@ def install(root):
     # security
     configureSecurity(root)
 
-    # addables
-#    configureAddables(root)
-
 def configureSecurity(root):
-    all_author = ['ChiefEditor', 'Manager']
+    all_author = [ 'Author', 'Editor', 'ChiefEditor', 'Manager']
     
     add_permissions = [
-        'Add Example Folders',
-        'Add Example Documents',
-        'Add Example Document Versions',
+        'Add Course Dates',
         ]
 
     for perm in add_permissions:
@@ -53,71 +48,35 @@ def setupMetadata(root):
     mapping = root.service_metadata.getTypeMapping()
     default = ''
     tm = (
-            {'type': 'Example Folder', 'chain': 'silva-content, silva-extra, silva-layout'},
-            {'type': 'Example Document', 'chain': 'silva-content, silva-extra'},
-            {'type': 'Example Document Version', 'chain': 'silva-content, silva-extra'},
+            {'type': 'Course Date', 'chain': 'silva-content , silva-extra'},
         )
 
     mapping.editMappings(default, tm)
     root.service_metadata.initializeMetadata()
 
-# BEN NOT USED - DELETE IF OKAY
-def configureAddables(root):
-    """Make sure the components aren't addable in the root but the homepages are"""
-# this is not necessary if you want your content types to be added anywhere.
-    news_non_addables = ['Example Document']
-    news_addables = ['Example Folder']
-    current_addables = root.get_silva_addables_allowed_in_publication()
-    new_addables = []
-    for a in current_addables:
-        if a not in news_non_addables:
-            new_addables.append(a)
-    for a in news_addables:
-        if a not in new_addables:
-            new_addables.append(a)
-    root.set_silva_addables_allowed_in_publication(new_addables)
 
 def uninstall(root):
     """unregister views for product"""
     unregisterViews(root.service_view_registry)
-    root.service_views.manage_delObjects(['SilvaUCLExampleContentTypes'])
+    root.service_views.manage_delObjects(['SilvaUCLLifeLearningContentTypes'])
 
 def is_installed(root):
     """Test is uninstalled"""
-    return hasattr(root.service_views, 'SilvaUCLExampleContentTypes')
+    return hasattr(root.service_views, 'SilvaUCLLifeLearningContentTypes')
 
 def registerViews(reg):
     """Register core views on registry.
     """
-    # edit
-    reg.register('edit', 'Example Folder', ['edit', 'Container', 'Folder', 'ExampleFolderType'])
-    reg.register('edit', 'Example Document', ['edit','VersionedContent','ExampleDocumentType'])
-
-    # public
-    reg.register('public', 'Example Folder', ['public', 'ExampleFolderType','view'])
-    reg.register('public', 'Example Document Version', ['public','ExampleDocumentType','view'])
-    reg.register('public', 'Example Document', ['public','ExampleDocumentType','view'])
-
-    #preview
-    reg.register('preview', 'Example Folder', ['public', 'ExampleFolderType','preview'])
-    reg.register('preview', 'Example Document Version', ['public','ExampleDocumentType','preview'])
-
-    # add
-    reg.register('add', 'Example Folder', ['add', 'ExampleFolderType'])
-    reg.register('add', 'Example Document', ['add', 'ExampleDocumentType'])
+    # Couse date views
+    reg.register('add', 'Course Date', ['add', 'CourseDate'])
+    reg.register('edit','Course Date', ['edit', 'Content','CourseDate'])
+    reg.register('public', 'Course Date', ['public', 'CourseDate'])
 
 
 def unregisterViews(reg):
     """unregister all the views"""
-    for meta_type in ['Example Folder']:
+    for meta_type in ['Course Date']:
         reg.unregister('edit', meta_type)
         reg.unregister('public', meta_type)
         reg.unregister('add', meta_type)
         reg.unregister('preview', meta_type)
-    # versioned objects
-    for meta_type in ['Example Document']:
-        reg.unregister('edit', meta_type)
-        reg.unregister('add', meta_type)
-        reg.unregister('public', meta_type)
-        reg.unregister('public', '%s Version' % meta_type)
-        reg.unregister('preview', '%s Version' % meta_type)

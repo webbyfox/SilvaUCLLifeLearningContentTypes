@@ -6,29 +6,14 @@
 
 
   <silva:extension
-    name="SilvaUCLExampleContentTypes" 
-    title="Silva UCL Example Content Types"
+    name="SilvaUCLLifeLearningContentTypes" 
+    title="Silva UCL Life Learning Content Types"
     />
-
-<!--  <silva:extension
-    name="SilvaUCLExampleContentTypes" 
-    title="Silva UCL Example Content Types"
-    depends="SilvaDocument"
-    />-->
-  
 
   <silva:content
-    extension_name="SilvaUCLExampleContentTypes"
-    content=".content.ExampleFolderType.ExampleFolderType"
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.CourseDate.CourseDate"
     icon="www/pictures-stack.png"
     />
-
-  <silva:versionedcontent
-    extension_name="SilvaUCLExampleContentTypes"
-    content=".content.ExampleDocumentType.ExampleDocumentType"
-    version=".content.ExampleDocumentType.ExampleDocumentTypeVersion"
-    icon="www/exclamation-diamond-frame.png"
-    /> 
-
 
 </configure>

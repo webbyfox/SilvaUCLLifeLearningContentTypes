@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+
+<form>
+  <title></title>
+  <row_length>4</row_length>
+  <name>courseDate</name>
+  <action></action>
+  <method>POST</method>
+  <enctype></enctype>
+  <encoding>UTF-8</encoding>
+  <stored_encoding>ISO-8859-1</stored_encoding>
+  <unicode_mode>false</unicode_mode>
+  <i18n_domain></i18n_domain>
+  <groups>
+    <group>
+      <title>Default</title>
+      <fields>
+
+       <field><id>object_id</id> <type>StringField</type>    
+         <values>    
+           <alternate_name></alternate_name>   
+           <hidden type="int">0</hidden>   
+           <max_length></max_length>   
+           <external_validator></external_validator>   
+           <display_maxwidth></display_maxwidth>   
+           <display_width type="int">30</display_width>    
+           <required type="int">1</required>   
+           <css_class></css_class>   
+           <default>CourseDate</default>   
+           <title>id</title>   
+           <truncate type="int">0</truncate>   
+           <description>This field cannot be edited</description>    
+           <extra>readonly="readonly"</extra>   
+           <unicode>1</unicode>    
+         </values>   
+         <tales>   
+         </tales>    
+       </field>    
+
+       
+ <field><id>ApplyLink</id> <type>StringField</type>
+        <values>
+          <alternate_name>ApplyLink</alternate_name>
+          <hidden type="int">0</hidden>
+          <max_length></max_length>
+          <external_validator></external_validator>
+          <display_maxwidth></display_maxwidth>
+          <display_width type="int">40</display_width>
+          <required type="int">1</required>
+          <css_class>store</css_class>
+          <default></default>
+          <title>ApplyLink</title>
+          <description>The title will be publicly visible, and is used as the default link in indexes.</description>
+          <extra></extra>
+          <unicode type="int">1</unicode>
+        </values>
+        <tales>
+        
+        <default>python:request.model.get_applylink()</default>
+        </tales>
+      </field>
+
+      
+      <field><id>CourseDate</id> <type>DateTimeField</type>
+        <values>
+          <allow_empty_time type="int">0</allow_empty_time>
+          <alternate_name></alternate_name>
+          <ampm_time_style type="int">0</ampm_time_style>
+          <calendar_picker type="int">0</calendar_picker>
+          <calendar_start>1</calendar_start>
+          <css_class></css_class>
+          <date_only type="int">1</date_only>
+          <date_separator>/</date_separator>
+          <default_now type="int">1</default_now>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <hidden type="int">0</hidden>
+          <hide_day type="int">0</hide_day>
+          <input_order>dmy</input_order>
+          <input_style>text</input_style>
+          <required type="int">1</required>
+          <time_separator>:</time_separator>
+          <title>Date</title>
+        </values>
+        <tales>
+         <default>python:request.model.get_coursedate()</default>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="not_datetime">You did not enter a valid date and time.</message>
+          <message name="datetime_out_of_range">The date and time you entered were out of range.</message>
+        </messages>
+      </field>
+      <field><id>Online</id> <type>CheckBoxField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default type="int">0</default>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra></extra>
+          <hidden type="int">0</hidden>
+          <title>Online</title>
+        </values>
+        <tales>
+        <default>python:request.model.get_online()</default>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+        </messages>
+      </field>
+      <field><id>Status</id> <type>RadioField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default></default>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra_item></extra_item>
+          <first_item type="int">0</first_item>
+          <hidden type="int">0</hidden>
+          <items type="list">[('On Sale', 'On Sale'), ('Sold out', 'Sold out'), ('Cancel', 'Cancel')]</items>
+          <orientation>vertical</orientation>
+          <required type="int">1</required>
+          <title>Status</title>
+          <unicode type="int">0</unicode>
+          <whitespace_preserve type="int">0</whitespace_preserve>
+        </values>
+        <tales>
+        <default>python:request.model.get_status()</default>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="unknown_selection">You selected an item that was not in the list.</message>
+        </messages>
+      </field>
+      </fields>
+    </group>
+  </groups>
+</form>
