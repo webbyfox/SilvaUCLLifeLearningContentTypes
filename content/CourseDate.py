@@ -58,6 +58,9 @@ class CourseDate(Content, SimpleItem):
         self._coursedate = DateTime()
         self._online = True
         self._status = ""
+        self._title = ""
+
+
     security.declareProtected(SilvaPermissions.AccessContentsInformation,'can_set_title')
     def can_set_title(self):
         return True
@@ -70,7 +73,7 @@ class CourseDate(Content, SimpleItem):
     security.declareProtected(SilvaPermissions.ChangeSilvaContent,'set_applylink')
     def set_applylink(self, ApplyLink):
         self._applylink = ApplyLink
-
+    
     # Accessor of ApplyLink field
     security.declareProtected(SilvaPermissions.ChangeSilvaContent,'get_applylink')
     def get_applylink(self):
@@ -105,7 +108,13 @@ class CourseDate(Content, SimpleItem):
     security.declareProtected(SilvaPermissions.ChangeSilvaContent,'get_status')
     def get_status(self):
         return self._status
-
-   
     
+    #security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'set_title')
+    #def set_title(self, CourseDate):
+    #    self._title = DateTime(CourseDate
+
+    #security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_title')
+    #def get_title(self):
+    #    self._title 
+ 
 InitializeClass(CourseDate)

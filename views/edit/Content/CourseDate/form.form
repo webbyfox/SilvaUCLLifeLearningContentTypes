@@ -16,29 +16,7 @@
       <title>Default</title>
       <fields>
 
-       <field><id>object_id</id> <type>StringField</type>    
-         <values>    
-           <alternate_name></alternate_name>   
-           <hidden type="int">0</hidden>   
-           <max_length></max_length>   
-           <external_validator></external_validator>   
-           <display_maxwidth></display_maxwidth>   
-           <display_width type="int">30</display_width>    
-           <required type="int">1</required>   
-           <css_class></css_class>   
-           <default>CourseDate</default>   
-           <title>id</title>   
-           <truncate type="int">0</truncate>   
-           <description>This field cannot be edited</description>    
-           <extra>readonly="readonly"</extra>   
-           <unicode>1</unicode>    
-         </values>   
-         <tales>   
-         </tales>    
-       </field>    
-
-       
- <field><id>ApplyLink</id> <type>StringField</type>
+      <field><id>ApplyLink</id> <type>StringField</type>
         <values>
           <alternate_name>ApplyLink</alternate_name>
           <hidden type="int">0</hidden>

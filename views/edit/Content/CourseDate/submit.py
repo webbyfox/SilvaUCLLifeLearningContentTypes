@@ -19,6 +19,13 @@ except FormValidationError, e:
    return view.tab_edit(message_type="error", message=view.render_form_errors(e))
 
 
+
+
+object_title = '_'.join([str(DateTime(result['CourseDate']).day()),
+                         str(DateTime(result['CourseDate']).month()),
+                         str(DateTime(result['CourseDate']).year())])
+editable.set_title(object_title)
+
 ApplyLink = result['ApplyLink']
 editable.set_applylink(ApplyLink)
 

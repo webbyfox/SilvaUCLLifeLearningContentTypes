@@ -2,6 +2,7 @@
 *.py[co]
 *.DS_Store
 *.egg-info
+*.swp
 Thumbs.db
 # ignore paster related eggs put here by buildout/ZopeSkel
 paste*.egg
