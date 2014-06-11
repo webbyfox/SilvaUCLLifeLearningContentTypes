@@ -31,7 +31,6 @@
            <title>id</title>   
            <truncate type="int">0</truncate>   
            <description>This field cannot be edited</description>    
-           <extra>readonly="readonly"</extra>   
            <unicode>1</unicode>    
          </values>   
          <tales>   
