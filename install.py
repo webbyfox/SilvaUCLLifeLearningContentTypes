@@ -71,7 +71,7 @@ def registerViews(reg):
     reg.register('add', 'Course Date', ['add', 'CourseDate'])
     reg.register('edit','Course Date', ['edit', 'Content','CourseDate'])
     reg.register('public', 'Course Date', ['public', 'CourseDate'])
-
+    reg.register('preview', 'Course Date', ['public','CourseDate','preview'])
 
 def unregisterViews(reg):
     """unregister all the views"""

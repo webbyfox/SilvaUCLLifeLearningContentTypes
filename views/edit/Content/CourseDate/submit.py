@@ -21,7 +21,7 @@ except FormValidationError, e:
 
 
 
-object_title = '_'.join([str(DateTime(result['CourseDate']).day()),
+object_title = '-'.join([str(DateTime(result['CourseDate']).day()),
                          str(DateTime(result['CourseDate']).month()),
                          str(DateTime(result['CourseDate']).year())])
 editable.set_title(object_title)
