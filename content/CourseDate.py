@@ -1,36 +1,22 @@
 # Copyright (c) 2013 University College London. All rights reserved.
+# Author: Rizwan Mansuri (WAMS - UCL) 
 
-from zope.interface import implements
-import re
-
-# Python
-from StringIO import StringIO
-from xml.sax import parseString
-from xml.sax.handler import ContentHandler
 
 # Zope
 from AccessControl import ClassSecurityInfo
 from DateTime import DateTime
 from Globals import InitializeClass
 from OFS.SimpleItem import SimpleItem
+from zope.interface import implements
 
 
 # Silva
 from Products.Silva import SilvaPermissions
-from Products.Silva.VersionedContent import CatalogedVersionedContent
-from Products.Silva.Version import CatalogedVersion
-from Products.Silva.interfaces import IVersionedContent
-from Products.Silva.helpers import add_and_edit
-from Products.Silva.Metadata import export_metadata
 from Products.Silva.Content import Content
 from Products.Silva import mangle
 
+# Others
 from interfaces import ICourseDate
-from Products.SilvaUCLLifeLearningContentTypes.silvaxmlattribute import SilvaXMLAttribute
-from Products.SilvaDocument.transform.Transformer import EditorTransformer
-from Products.SilvaDocument.transform.base import Context
-from Products.Silva.Image import havePIL
-from DateTime import DateTime
 
 
 def manage_addCourseDate(self, id, title, result, REQUEST=None):
@@ -57,7 +43,7 @@ class CourseDate(Content, SimpleItem):
         self._applylink = ""
         self._coursedate = DateTime()
         self._online = True
-        self._status = ""
+        self._status = "On Sale"
         self._title = ""
 
 

@@ -4,6 +4,6 @@ class ICourseDate(IContent):
     """Interface for Course Date object"""
     pass
 
-
-#class IReviewType(IVersion):
-#     """Interface for Review object"""
+class IReview(IContent):
+     """Interface for Review object"""
+     pass

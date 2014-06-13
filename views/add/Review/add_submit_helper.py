@@ -7,7 +7,6 @@
 ##parameters=model, id, title, result
 ##title=
 ##
-model.manage_addProduct['SilvaUCLLifeLearningContentTypes'].manage_addCourseDate(id, title)
+model.manage_addProduct['SilvaUCLLifeLearningContentTypes'].manage_addReview(id, title)
 new = getattr(model, id)
-#new.set_funnelback_collection(result['funnelback_collection'])
 return new

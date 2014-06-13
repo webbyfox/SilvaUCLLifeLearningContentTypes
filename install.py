@@ -27,7 +27,8 @@ def configureSecurity(root):
     all_author = [ 'Author', 'Editor', 'ChiefEditor', 'Manager']
     
     add_permissions = [
-        'Add Course Dates',
+        'Add Course Dates', 
+        'Add Reviews',
         ]
 
     for perm in add_permissions:
@@ -49,6 +50,8 @@ def setupMetadata(root):
     default = ''
     tm = (
             {'type': 'Course Date', 'chain': 'silva-content , silva-extra'},
+            {'type': 'Review', 'chain': 'silva-content , silva-extra'},
+
         )
 
     mapping.editMappings(default, tm)
@@ -73,9 +76,17 @@ def registerViews(reg):
     reg.register('public', 'Course Date', ['public', 'CourseDate'])
     reg.register('preview', 'Course Date', ['public','CourseDate','preview'])
 
+    # Review views
+    reg.register('add', 'Review', ['add', 'Review'])
+    reg.register('edit','Review', ['edit', 'Content','Review'])
+    reg.register('public', 'Review', ['public', 'Review'])
+    reg.register('preview', 'Review', ['public','Review','preview'])
+
+
+
 def unregisterViews(reg):
     """unregister all the views"""
-    for meta_type in ['Course Date']:
+    for meta_type in ['Course Date','Review']:
         reg.unregister('edit', meta_type)
         reg.unregister('public', meta_type)
         reg.unregister('add', meta_type)

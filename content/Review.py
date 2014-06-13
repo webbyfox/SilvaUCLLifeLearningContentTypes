@@ -1,17 +1,21 @@
 # Copyright (c) 2014 University College London. All rights reserved
+# Author: Rizwan Mansuri (WAMS - UCL)
 
 #Zope import
 from OFS.SimpleItem import SimpleItem
 from AccessControl import ClassSecurityInfo
+from zope.interface import implements
 
 # Silva import
 from Products.Silva import mangle
+from Products.Silva.Content import Content
+from Products.Silva import SilvaPermissions
 
 # Others
 from interfaces import IReview
 
 def manage_addReview(self, id, title, result, REQUEST=None):
-    """Add Review"""
+    """Add review"""
     if not mangle.Id(self,id).isValid():
         return
     object = Review(id)
@@ -27,7 +31,7 @@ class Review(Content, SimpleItem):
     """
     implements(IReview)
     security = ClassSecurityInfo()
-    meta_type = "Review Item"
+    meta_type = "Review"
 
     def __init__(self, id):
         Review.inheritedAttribute('__init__')(self,id)
@@ -36,11 +40,11 @@ class Review(Content, SimpleItem):
         self._reviewmemberdescription = ""
         self._reviewmemberimage = ""
 
-    security.declareProtected(SilvaPermissions.AccessControlsInformation, 'can_set_title')
+    security.declareProtected(SilvaPermissions.AccessContentsInformation, 'can_set_title')
     def can_set_title(self):
         return True
 
-    security.declareProtected(SilvaPermissions.AccessControlsInformation, 'is_deletable')
+    security.declareProtected(SilvaPermissions.AccessContentsInformation, 'is_deletable')
     def is_deletable(self):
         return True
 
@@ -51,7 +55,7 @@ class Review(Content, SimpleItem):
 
     # Accessor for ReviewMemberName field
     security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_reviewmembername')
-    def get_reviewmembername(self, ReviewMemberName):
+    def get_reviewmembername(self):
         return self._reviewmembername
     
     
@@ -62,7 +66,7 @@ class Review(Content, SimpleItem):
 
     # Accessor for ReviewMemberTitle field
     security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_reviewmembertitle')
-    def get_reviewmembertitle(self, ReviewMemberTitle):
+    def get_reviewmembertitle(self):
         return self._reviewmembertitle
 
     
@@ -73,7 +77,7 @@ class Review(Content, SimpleItem):
 
     # Accessor for ReviewMemberDescription field
     security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_reviewmemberdescription')
-    def get_reviewmemberdescription(self, ReviewMemberDescription):
+    def get_reviewmemberdescription(self):
         return self._reviewmemberdescription
 
     
@@ -83,7 +87,7 @@ class Review(Content, SimpleItem):
         self._reviewmemberimage = ReviewMemberImage
 
     # Accessor for ReviewMemberImage field
-    security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_reviewmemberImage')
-    def get_reviewmemberimage(self, ReviewMemberImage):
+    security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_reviewmemberimage')
+    def get_reviewmemberimage(self):
         return self._reviewmemberimage
 

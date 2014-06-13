@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <form>
-  <title>IndigoAttribute</title>
+  <title>Review</title>
   <row_length>4</row_length>
   <name>add_form</name>
   <action></action>
@@ -27,7 +27,7 @@
            <display_width type="int">30</display_width>    
            <required type="int">1</required>   
            <css_class></css_class>   
-           <default>CourseDate</default>   
+           <default>ReviewId</default>   
            <title>ReviewID</title>   
            <truncate type="int">0</truncate>   
            <description>This field cannot be edited</description>    

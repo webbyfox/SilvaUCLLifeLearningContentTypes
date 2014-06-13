@@ -7,7 +7,7 @@
 
   <silva:extension
     name="SilvaUCLLifeLearningContentTypes" 
-    title="Silva UCL Life Learning Content Types"
+    title="UCL Life Learning Content Types"
     />
 
   <silva:content
@@ -15,5 +15,14 @@
     content=".content.CourseDate.CourseDate"
     icon="www/pictures-stack.png"
     />
+
+
+  <silva:content
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.Review.Review"
+    icon="www/bubble.png"
+    />
+
+
 
 </configure>
