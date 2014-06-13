@@ -31,8 +31,8 @@ editable.set_reviewmembertitle(ReviewMemberTitle)
 ReviewMemberDescription = result['ReviewMemberDescription']
 editable.set_reviewmemberdescription(ReviewMemberDescription)
 
-#ReviewMemberImage = result['ReviewMemberImage']
-#editable.set_reviewmemberimage(ReviewMemberImage)
+ReviewMemberImagePath = result['ReviewMemberImagePath']
+editable.set_reviewmemberimagepath(ReviewMemberImagePath)
 
 # not sure what this line does
 model.sec_update_last_author_info()

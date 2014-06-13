@@ -103,22 +103,23 @@
           <message name="too_long">You entered too many characters.</message>
         </messages>
       </field>
-      <field><id>ReviewMemberImage</id> <type>FileField</type>
+      <field><id>ReviewMemberImagePath</id> <type>StringField</type>
         <values>
           <alternate_name></alternate_name>
           <css_class></css_class>
           <default></default>
           <description></description>
           <display_maxwidth></display_maxwidth>
-          <display_width type="int">20</display_width>
+          <display_width type="int">40</display_width>
           <enabled type="int">1</enabled>
           <external_validator></external_validator>
           <extra></extra>
           <hidden type="int">0</hidden>
           <required type="int">0</required>
-          <title>ReviewMemberImage</title>
+          <title>ReviewMemberImagePath</title>
         </values>
         <tales>
+           <default>python:request.model.get_reviewmemberimagepath()</default>
         </tales>
         <messages>
           <message name="external_validator_failed">The input failed the external validator.</message>

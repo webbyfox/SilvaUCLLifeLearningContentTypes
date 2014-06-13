@@ -38,7 +38,7 @@ class Review(Content, SimpleItem):
         self._reviewmembername = ""
         self._reviewmembertitle = ""
         self._reviewmemberdescription = ""
-        self._reviewmemberimage = ""
+        self._reviewmemberimagepath = ""
 
     security.declareProtected(SilvaPermissions.AccessContentsInformation, 'can_set_title')
     def can_set_title(self):
@@ -81,13 +81,14 @@ class Review(Content, SimpleItem):
         return self._reviewmemberdescription
 
     
-    # Mutator for ReviewMemberImage field
-    security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'set_reviewmemberimage')
-    def set_reviewmemberimage(self, ReviewMemberImage):
-        self._reviewmemberimage = ReviewMemberImage
+    # Mutator for ReviewMemberImagePath field
+    security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'set_reviewmemberimagepath')
+    def set_reviewmemberimagepath(self, ReviewMemberImagePath):
+        self._reviewmemberimagepath = ReviewMemberImagePath
 
-    # Accessor for ReviewMemberImage field
-    security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_reviewmemberimage')
-    def get_reviewmemberimage(self):
-        return self._reviewmemberimage
+    # Accessor for ReviewMemberImagePath field
+    security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_reviewmemberimagepath')
+    def get_reviewmemberimagepath(self):
+        return self._reviewmemberimagepath
+
 
