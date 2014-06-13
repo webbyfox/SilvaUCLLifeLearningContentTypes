@@ -50,7 +50,7 @@
           <default></default>
           <description></description>
           <display_maxwidth></display_maxwidth>
-          <display_width type="int">20</display_width>
+          <display_width type="int">50</display_width>
           <enabled type="int">1</enabled>
           <external_validator></external_validator>
           <extra></extra>
@@ -63,6 +63,7 @@
           <whitespace_preserve type="int">0</whitespace_preserve>
         </values>
         <tales>
+            <default>python:request.model.get_reviewmembername()</default>
         </tales>
         <messages>
           <message name="external_validator_failed">The input failed the external validator.</message>
@@ -77,7 +78,7 @@
           <default></default>
           <description></description>
           <display_maxwidth></display_maxwidth>
-          <display_width type="int">20</display_width>
+          <display_width type="int">50</display_width>
           <enabled type="int">1</enabled>
           <external_validator></external_validator>
           <extra></extra>
@@ -90,6 +91,7 @@
           <whitespace_preserve type="int">0</whitespace_preserve>
         </values>
         <tales>
+           <default>python:request.model.get_reviewmembertitle()</default>
         </tales>
         <messages>
           <message name="external_validator_failed">The input failed the external validator.</message>
@@ -108,7 +110,7 @@
           <extra></extra>
           <height type="int">5</height>
           <hidden type="int">0</hidden>
-          <max_length></max_length>
+          <max_length type="int">200</max_length>
           <max_linelength></max_linelength>
           <max_lines></max_lines>
           <required type="int">1</required>
@@ -118,6 +120,7 @@
           <width type="int">40</width>
         </values>
         <tales>
+           <default>python:request.model.get_reviewmemberdescription()</default>
         </tales>
         <messages>
           <message name="external_validator_failed">The input failed the external validator.</message>

@@ -38,7 +38,6 @@
         </tales>
       </field>
 
-      
       <field><id>CourseDate</id> <type>DateTimeField</type>
         <values>
           <allow_empty_time type="int">0</allow_empty_time>
@@ -94,7 +93,7 @@
         <values>
           <alternate_name></alternate_name>
           <css_class></css_class>
-          <default></default>
+          <default>On Sale</default>
           <description></description>
           <enabled type="int">1</enabled>
           <external_validator></external_validator>
@@ -108,7 +107,7 @@
           <unicode type="int">0</unicode>
           <whitespace_preserve type="int">0</whitespace_preserve>
         </values>
-        <tales>
+       <tales>
         <default>python:request.model.get_status()</default>
         </tales>
         <messages>
