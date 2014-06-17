@@ -16,13 +16,16 @@
     icon="www/pictures-stack.png"
     />
 
-
   <silva:content
     extension_name="SilvaUCLLifeLearningContentTypes"
     content=".content.Review.Review"
     icon="www/bubble.png"
     />
 
-
+  <silva:content
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.Course.Course"
+    icon="www/pictures-stack.png"
+    />
 
 </configure>
