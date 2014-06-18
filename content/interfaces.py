@@ -1,4 +1,4 @@
-from Products.Silva.interfaces import IVersionedContent, IVersion, IContainer, IContent, IVersionedContent
+from Products.Silva.interfaces import IVersion, IContent, IVersionedContent
 
 class ICourseDate(IContent):
     """Interface for Course Date object"""
@@ -8,11 +8,11 @@ class IReview(IContent):
      """Interface for Review object"""
      pass
 
-class ICourse(IVersionedContent):
+class ICoursePage(IVersionedContent):
     """Interface for Course object"""
     pass   
     
-class ICourseVersion(IVersion):
+class ICoursePageVersion(IVersion):
     """Interface for version of Course"""
     pass
          

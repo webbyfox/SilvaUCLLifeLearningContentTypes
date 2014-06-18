@@ -22,10 +22,11 @@
     icon="www/bubble.png"
     />
 
-<!--  <silva:content
+  <silva:versionedcontent
     extension_name="SilvaUCLLifeLearningContentTypes"
-    content=".content.Course.Course"
+    content=".content.CoursePage.CoursePage"
+    version=".content.CoursePage.CoursePageVersion"
     icon="www/pictures-stack.png"
     />
--->
+
 </configure>
