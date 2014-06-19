@@ -75,7 +75,7 @@ class CoursePage(CatalogedVersionedContent):
     """
     implements(ICoursePage)
     security = ClassSecurityInfo()
-    meta_type = 'Course Page'
+    meta_type = "Course Page"
     __doc__ = "Course Page object for Course Container"
 
     security.declareProtected(SilvaPermissions.ChangeSilvaContent,'PUT')

@@ -1,23 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html tal:omit-tag=""
-      lang="en"
-      xml:lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:notal="http://www.infrae.com/silva/notal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="silvanews"
-      tal:define="unapproved_version model/get_unapproved_version">
+  lang="en"
+  xml:lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:notal="http://www.infrae.com/silva/notal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="silvanews">
 
 <metal:define-macro metal:define-macro="editor">
 <metal:use-macro metal:use-macro="here/macro_index/macros/master">
 
 <metal:fill-slot fill-slot="metatype_css">
-<tal:condition condition="not: model/get_unapproved_version">
+<tal:condition condition="python: not model.get_unapproved_version()">
 <link rel="stylesheet"
-      type="text/css"
-      tal:attributes="href here/frontend.css/absolute_url | nothing" />
+  type="text/css"
+  tal:attributes="href here/frontend.css/absolute_url | nothing"
+/>
 <style type="text/css">
 div.public {
   margin-top: 1em;
@@ -51,7 +51,8 @@ h2 {
   tal:define="
     is_locked model/sec_is_locked;
     request_pending python:model.is_version_approval_requested();
-    unapproved_version model/get_unapproved_version">
+    unapproved_version model/get_unapproved_version;
+">
 <span tal:replace="nothing"> _______ simultaneous edit lock _______ </span>
 <tal:condition condition="python:unapproved_version and is_locked">
   <div class="fixed-feedback">
@@ -149,20 +150,15 @@ h2 {
     previewable_version model/get_previewable;
     unapproved_version model/get_unapproved_version">
   <span tal:replace="nothing"> _________ show editor ____ </span>
-  <tal:edit condition="python:unapproved_version and not request_pending and not is_locked">
+  <tal:edit tal:condition="python:unapproved_version and not request_pending and not is_locked">
     <metal:plug define-slot="editor_content" />
   </tal:edit>
 
   <span tal:replace="nothing"> _________ or preview document ____ </span>
   <tal:preview tal:condition="python: not unapproved_version and previewable_version is not None">
-    <metal:use use-macro="here/macro_coursepage/macros/infobox">
-      this will insert an info box for social components
-    </metal:use>
-    <div class="public" style="margin-top: 1.5em;">
-      <h2 class="heading" tal:content="previewable_version/get_title"></h2>
-      <tal:text tal:content="structure previewable_version/content/render" />
+    <div class="public" style="margin-top: 1.5em;"
+         tal:content="structure previewable_version/content/render">
     </div>
-    <br clear="both" />
   </tal:preview>
 </metal:fill-slot>
 

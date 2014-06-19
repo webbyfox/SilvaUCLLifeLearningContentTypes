@@ -30,6 +30,7 @@ def configureSecurity(root):
         'Add Course Dates', 
         'Add Reviews',
         'Add Course Pages',
+        'Add Course Page Versions'
         ]
 
     for perm in add_permissions:
@@ -86,18 +87,26 @@ def registerViews(reg):
     # Course Page item
     reg.register('add', 'Course Page', ['add', 'CoursePage'])
     reg.register('edit','Course Page', ['edit', 'VersionedContent','CoursePage'])
-    reg.register('public', 'Course Page', ['public', 'CoursePage'])
-    reg.register('preview', 'Course Page', ['public','CoursePage','preview'])
+    reg.register('public', 'Course Page', ['public', 'CoursePage', 'view'])
+    reg.register('public', 'Course Page Version', ['public', 'CoursePage', 'view'])
+    reg.register('preview', 'Course Page Version', ['public','CoursePage','preview'])
 
 
 
 def unregisterViews(reg):
     """unregister all the views"""
-    for meta_type in ['Course Date',
+    for meta_type in [
+                      'Course Date',
                       'Review',
-                      'Course Page',
+                      
                      ]:
         reg.unregister('edit', meta_type)
         reg.unregister('public', meta_type)
         reg.unregister('add', meta_type)
         reg.unregister('preview', meta_type)
+    for meta_type in ['Course Page',]:
+        reg.unregister('edit', meta_type)
+        reg.unregister('add', meta_type)
+        reg.unregister('public', meta_type)
+        reg.unregister('public', '%s Version' % meta_type)
+        reg.unregister('preview', '%s Version' % meta_type)
