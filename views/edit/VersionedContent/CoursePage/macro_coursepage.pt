@@ -1,0 +1,26 @@
+<metal:coursepageinfo define-macro="infobox">
+<tal:comment replace="nothing">
+    IS THIS MACRO USED FOR ANYTHING - CHECK AND RM IF NOT
+</tal:comment>
+<div class="info"
+  style="float: right; width: 20%; margin: 1.5em 0.8em 0.8em 0;"
+  tal:define="icon python:view.render_icon(model)">
+  <h3 i18n:translate="">
+    <img tal:replace="structure icon" /> Course Page
+  </h3>
+  <p tal:define="field python: model.get_viewable().get_pagetitle();"
+      tal:condition="field">
+      <span i18n:translate="" class="subhead">Page Title</span><br />
+      <tal:catno replace="field" />
+  </p>
+
+   <p tal:define="field python: model.get_viewable().get_shortdescription();"
+      tal:condition="field">
+      <span i18n:translate="" class="subhead">Short Description</span><br />
+      <tal:catno replace="field" />
+  </p>
+ 
+</div>
+</metal:coursepageinfo>
+
+

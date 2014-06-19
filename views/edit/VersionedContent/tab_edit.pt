@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html tal:omit-tag=""
+  lang="en"
+  xml:lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:notal="http://www.infrae.com/silva/notal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="silva"
+  tal:define="maintitlecolspan string:3;
+              vein vein|string:'edit';
+              global form here/form;"
+>
+<metal:use-macro use-macro="here/macro_tab_edit/macros/editor">
+
+<metal:editorcontent fill-slot="editor_content">
+ <metal:use-macro use-macro="here/macro_edit/macros/three-col-layout">
+
+ <metal:slot fill-slot="main-head">
+    <thead>
+      <tr class="controls">
+        <td class="align-right"
+          colspan="3">
+          <input class="button"
+            type="submit"
+            value="save"
+            title="access key: alt-s"
+            accesskey="s"
+            name="submit:method"
+            i18n:attributes="title;value;accesskey save_accesskey"
+           />
+        </td>
+      </tr>
+    </thead>
+ </metal:slot>
+
+
+
+  <metal:fillbody fill-slot="main-body">
+      <tr>
+        <th width="12%"
+          i18n:translate="">
+          attributes
+        </th>
+        <th i18n:translate="">
+          content
+        </th>
+        <th i18n:translate="">
+          description
+        </th>
+      </tr>
+     <tal:repeat repeat="field form/get_fields">
+      <tr tal:attributes="class python:repeat['field'].odd() and 'odd' or 'even'">
+       <td class="field-title" style="text-align: left;">
+        <label tal:attributes="for field/id" tal:content="python:field['title']" style="text-transform:capitalize;" />
+        <span class="warning" tal:condition="python:field.is_required()">*</span>
+       </td>
+       <td>
+         <div style="float: left;">
+            <input tal:replace="structure python:field.render_from_request(request)" />
+         </div>
+       </td>
+       <td>
+        <div tal:content="structure python:field.get_value('description')" />
+       </td>
+      </tr>
+     </tal:repeat>
+  </metal:fillbody>
+
+  <metal:fillfoot fill-slot="main-foot">
+      <tr class="controls">
+        <td class="align-right"
+          colspan="3">
+          <input class="button"
+            type="submit"
+            value="save"
+            title="access key: alt-s"
+            accesskey="s"
+            name="submit:method"
+            i18n:attributes="title;value;accesskey save_accesskey"
+           />
+        </td>
+      </tr>
+  </metal:fillfoot>
+
+  <metal:slot fill-slot="right-column">
+    <div class="info">
+      <h3 i18n:translate="">
+        <img tal:replace="structure icon" i18n:name="icon"/>
+        Silva UCL Component
+      </h3>
+      <p i18n:translate="">Components are elements used by Chief Editors to build up a composite homepage.</p>
+    </div>
+  </metal:slot>
+
+
+ </metal:use-macro>
+</metal:editorcontent>
+
+</metal:use-macro>
+</html>
