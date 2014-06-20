@@ -4,6 +4,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:five="http://namespaces.zope.org/five">
 
+      <include package="Products.SilvaDocument" />
 
   <silva:extension
     name="SilvaUCLLifeLearningContentTypes" 
@@ -13,20 +14,34 @@
   <silva:content
     extension_name="SilvaUCLLifeLearningContentTypes"
     content=".content.CourseDate.CourseDate"
-    icon="www/pictures-stack.png"
+    icon="www/calendar-month.png"
     />
 
   <silva:content
     extension_name="SilvaUCLLifeLearningContentTypes"
     content=".content.Review.Review"
-    icon="www/bubble.png"
+    icon="www/sticky-note.png"
     />
+
+   <silva:content
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.Course.Course"
+    icon="www/application-plus-black.png"
+    />
+ 
 
   <silva:versionedcontent
     extension_name="SilvaUCLLifeLearningContentTypes"
     content=".content.CoursePage.CoursePage"
     version=".content.CoursePage.CoursePageVersion"
-    icon="www/pictures-stack.png"
+    icon="www/newspaper--arrow.png"
     />
+
+  <subscriber
+     for=".content.interfaces.ICourse
+            zope.app.container.interfaces.IObjectAddedEvent"
+     handler=".content.Course.course_added"
+     />
+
 
 </configure>

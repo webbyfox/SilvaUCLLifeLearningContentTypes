@@ -30,7 +30,8 @@ def configureSecurity(root):
         'Add Course Dates', 
         'Add Reviews',
         'Add Course Pages',
-        'Add Course Page Versions'
+        'Add Course Page Versions',
+        'Add Courses'
         ]
 
     for perm in add_permissions:
@@ -53,6 +54,7 @@ def setupMetadata(root):
     tm = (
             {'type': 'Course Date', 'chain': 'silva-content , silva-extra'},
             {'type': 'Review', 'chain': 'silva-content , silva-extra'},
+            {'type': 'Course', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Page Version', 'chain': 'silva-content , silva-extra'},
         )
 
@@ -91,6 +93,13 @@ def registerViews(reg):
     reg.register('public', 'Course Page Version', ['public', 'CoursePage', 'view'])
     reg.register('preview', 'Course Page Version', ['public','CoursePage','preview'])
 
+    # Course container
+    reg.register('add', 'Course', ['add', 'Course'])
+    reg.register('edit','Course', ['edit', 'Container','Course'])
+    reg.register('public', 'Course', ['public', 'Course', 'view'])
+    reg.register('public', 'Course', ['public', 'Course', 'view'])
+    reg.register('preview', 'Course', ['public','Course','preview'])
+
 
 
 def unregisterViews(reg):
@@ -98,6 +107,7 @@ def unregisterViews(reg):
     for meta_type in [
                       'Course Date',
                       'Review',
+                      'Course'
                       
                      ]:
         reg.unregister('edit', meta_type)
