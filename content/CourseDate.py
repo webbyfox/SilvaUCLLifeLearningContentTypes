@@ -95,12 +95,5 @@ class CourseDate(Content, SimpleItem):
     def get_status(self):
         return self._status
     
-    #security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'set_title')
-    #def set_title(self, CourseDate):
-    #    self._title = DateTime(CourseDate
-
-    #security.declareProtected(SilvaPermissions.ChangeSilvaContent, 'get_title')
-    #def get_title(self):
-    #    self._title 
  
 InitializeClass(CourseDate)

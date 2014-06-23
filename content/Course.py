@@ -33,18 +33,18 @@ InitializeClass(Course)
 
 def course_added(course, event):
 	"""
-	Event Handler:	While course container added, it shold add course page, and some silva SilvaDocuments
+	Event Handler:	While course container added, it adds course page, and some SilvaDocuments
 	"""
-    if event.oldParent is None and event.object == course:
-        if course.get_default() is None:
-            factory = course.manage_addProduct['SilvaUCLLifeLearningContentTypes']
-            factory.manage_addCoursePage('index', 'Index')
+	if event.oldParent is None and event.object == course:
+		if course.get_default() is None:
+			factory = course.manage_addProduct['SilvaUCLLifeLearningContentTypes']
+			factory.manage_addCoursePage('index', 'Index')
         
         ids = course.objectIds()
         if 'learning-outcomes' not in ids:
         	factory = course.manage_addProduct['SilvaDocument']
         	factory.manage_addDocument('learning-outcomes', 'Learning Outcomes')
-
-       	if 'faq' not in ids:
-        	factory = course.manage_addProduct['SilvaDocument']
-        	factory.manage_addDocument('faq', 'FAQs')
+		
+		if 'faq' not in ids:
+			factory = course.manage_addProduct['SilvaDocument']
+			factory.manage_addDocument('faq', 'FAQs')

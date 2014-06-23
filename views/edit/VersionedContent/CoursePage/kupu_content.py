@@ -80,6 +80,15 @@ if hasattr(version, 'get_location'):
 if hasattr(version, 'get_locationurl'):
     metas.append(meta_template % ('locationurl', version.get_locationurl() or ''))
 
+if hasattr(version, 'get_partnerimage1'):
+    metas.append(meta_template % ('partnerimage1', version.get_partnerimage1() or ''))
+
+if hasattr(version, 'get_partnerimage2'):
+    metas.append(meta_template % ('partnerimage2', version.get_partnerimage2() or ''))
+
+if hasattr(version, 'get_partnerimage3'):
+    metas.append(meta_template % ('partnerimage3', version.get_partnerimage3() or ''))
+
 if hasattr(version, 'get_cost'):
     metas.append(meta_template % ('cost', version.get_cost() or ''))
 

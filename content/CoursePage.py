@@ -105,6 +105,9 @@ class CoursePage(CatalogedVersionedContent):
             version.set_timingaccess(handler.metadata['timingaccess'][0])
             version.set_location(handler.metadata['location'][0])
             version.set_locationurl(handler.metadata['locationurl'][0])
+            version.set_partnerimage1(handler.metadata['partnerimage1'][0])
+            version.set_partnerimage2(handler.metadata['partnerimage2'][0])
+            version.set_partnerimage3(handler.metadata['partnerimage3'][0])
             version.set_cost(handler.metadata['cost'][0])
             version.set_learninghours(handler.metadata['learninghours'][0])
             version.set_courseduration(handler.metadata['courseduration'][0])
@@ -128,6 +131,9 @@ class CoursePageVersion(CatalogedVersion):
         self._timingaccess = ""
         self._location = ""
         self._locationurl = ""
+        self._partnerimage1 = ""
+        self._partnerimage2 = "" 
+        self._partnerimage3 = ""        
         self._cost = ""
         self._learninghours = ""
         self._courseduration = ""
@@ -226,6 +232,41 @@ class CoursePageVersion(CatalogedVersion):
         else:
             return self._locationurl
      
+    # Mutator
+    def set_partnerimage1(self,partnerimage1):
+        self._partnerimage1 = partnerimage1
+
+    # Accessor
+    def get_partnerimage1(self):
+        if not hasattr(self, '_partnerimage1'):
+            self._partnerimage1 = ""
+        else:
+            return self._partnerimage1
+     
+
+    # Mutator
+    def set_partnerimage2(self,partnerimage2):
+        self._partnerimage2 = partnerimage2
+
+    # Accessor
+    def get_partnerimage2(self):
+        if not hasattr(self, '_partnerimage2'):
+            self._partnerimage2 = ""
+        else:
+            return self._partnerimage2
+      
+    # Mutator
+    def set_partnerimage3(self,partnerimage3):
+        self._partnerimage3 = partnerimage3
+
+    # Accessor
+    def get_partnerimage3(self):
+        if not hasattr(self, '_partnerimage3'):
+            self._partnerimage3 = ""
+        else:
+            return self._partnerimage3
+     
+
     # Mutator
     def set_cost(self,cost):
         self._cost = cost

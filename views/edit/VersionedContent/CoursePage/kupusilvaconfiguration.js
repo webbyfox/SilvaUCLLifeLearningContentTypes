@@ -9,7 +9,10 @@ EDITABLE_METADATA = {
     	{name: 'timingaccess', type: 'text', mandatory: 0, title: 'Timing Access'},
     	{name: 'location', type: 'text', mandatory: 0, title: 'Location'},
     	{name: 'locationurl', type: 'text', mandatory: 0, title: 'Location URL'},
-    	{name: 'cost', type: 'text', mandatory: 0, title: 'Cost'},
+        {name: 'partnerimage1', type: 'reference', mandatory: 0, title: 'Partner Image 1',lookup: 'Silva Image'},
+        {name: 'partnerimage2', type: 'reference', mandatory: 0, title: 'Partner Image 2',lookup: 'Silva Image'},
+        {name: 'partnerimage3', type: 'reference', mandatory: 0, title: 'Partner Image 3',lookup: 'Silva Image'},
+        {name: 'cost', type: 'text', mandatory: 0, title: 'Cost'},
     	{name: 'learninghours', type: 'text', mandatory: 0, title: 'Learning Hours'},
     	{name: 'courseduration', type: 'text', mandatory: 0, title: 'Course Duration'}
     		
