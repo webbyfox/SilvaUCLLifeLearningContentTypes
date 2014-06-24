@@ -20,3 +20,7 @@ class ICourse(IContainer):
 	"""Interface for Course Container"""
 	pass
          
+class ICourseTeam(IContent):
+    """Interface for Course Team"""
+    pass
+    

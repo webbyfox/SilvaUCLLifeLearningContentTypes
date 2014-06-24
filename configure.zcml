@@ -43,5 +43,11 @@
      handler=".content.Course.course_added"
      />
 
+   <silva:content
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.CourseTeam.CourseTeam"
+    icon="www/users.png"
+    />
+
 
 </configure>

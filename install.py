@@ -31,7 +31,8 @@ def configureSecurity(root):
         'Add Reviews',
         'Add Course Pages',
         'Add Course Page Versions',
-        'Add Courses'
+        'Add Courses',
+        'Add Course Teams',
         ]
 
     for perm in add_permissions:
@@ -56,6 +57,7 @@ def setupMetadata(root):
             {'type': 'Review', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Page Version', 'chain': 'silva-content , silva-extra'},
+            {'type': 'Course Team', 'chain': 'silva-content , silva-extra'},
         )
 
     mapping.editMappings(default, tm)
@@ -77,13 +79,13 @@ def registerViews(reg):
     # Couse date views
     reg.register('add', 'Course Date', ['add', 'CourseDate'])
     reg.register('edit','Course Date', ['edit', 'Content','CourseDate'])
-    reg.register('public', 'Course Date', ['public', 'CourseDate'])
+    reg.register('public', 'Course Date', ['public', 'CourseDate', 'view'])
     reg.register('preview', 'Course Date', ['public','CourseDate','preview'])
 
     # Review views
     reg.register('add', 'Review', ['add', 'Review'])
     reg.register('edit','Review', ['edit', 'Content','Review'])
-    reg.register('public', 'Review', ['public', 'Review'])
+    reg.register('public', 'Review', ['public', 'Review', 'view'])
     reg.register('preview', 'Review', ['public','Review','preview'])
 
     # Course Page item
@@ -100,6 +102,11 @@ def registerViews(reg):
     reg.register('public', 'Course', ['public', 'Course', 'view'])
     reg.register('preview', 'Course', ['public','Course','preview'])
 
+    # Course Team view registry
+    reg.register('add', 'Course Team', ['add', 'CourseTeam'])
+    reg.register('edit','Course Team', ['edit', 'Content','CourseTeam'])
+    reg.register('public', 'Course Team', ['public', 'CourseTeam', 'view'])
+    reg.register('preview', 'Course Team', ['public','CourseTeam','preview'])
 
 
 def unregisterViews(reg):
@@ -107,7 +114,8 @@ def unregisterViews(reg):
     for meta_type in [
                       'Course Date',
                       'Review',
-                      'Course'
+                      'Course',
+                      'Course Team'
                       
                      ]:
         reg.unregister('edit', meta_type)
