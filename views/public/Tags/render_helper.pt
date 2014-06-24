@@ -1,0 +1,13 @@
+<tal:comp
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="silva_news"
+  tal:define="model request/model;"> 
+
+    <p tal:content="model/get_subject"/>		
+    <p tal:content="model/get_category"/>
+    <p tal:content="model/get_format"/>
+
+
+</tal:comp>

@@ -33,6 +33,7 @@ def configureSecurity(root):
         'Add Course Page Versions',
         'Add Courses',
         'Add Course Teams',
+        'Add Course Tagss',
         ]
 
     for perm in add_permissions:
@@ -58,6 +59,7 @@ def setupMetadata(root):
             {'type': 'Course', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Page Version', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Team', 'chain': 'silva-content , silva-extra'},
+            {'type': 'Course Tags', 'chain': 'silva-content , silva-extra'},
         )
 
     mapping.editMappings(default, tm)
@@ -108,6 +110,12 @@ def registerViews(reg):
     reg.register('public', 'Course Team', ['public', 'CourseTeam', 'view'])
     reg.register('preview', 'Course Team', ['public','CourseTeam','preview'])
 
+    # Tags view registry
+    reg.register('add', 'Course Tags', ['add', 'Tags'])
+    reg.register('edit','Course Tags', ['edit', 'Content','Tags'])
+    reg.register('public', 'Course Tags', ['public', 'Tags', 'view'])
+    reg.register('preview', 'Course Tags', ['public','Tags','preview'])
+
 
 def unregisterViews(reg):
     """unregister all the views"""
@@ -115,7 +123,8 @@ def unregisterViews(reg):
                       'Course Date',
                       'Review',
                       'Course',
-                      'Course Team'
+                      'Course Team',
+                      'Course Tags'
                       
                      ]:
         reg.unregister('edit', meta_type)

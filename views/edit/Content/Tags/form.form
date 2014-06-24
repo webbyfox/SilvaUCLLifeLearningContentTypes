@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+
+<form>
+  <title>Tags</title>
+  <row_length>4</row_length>
+  <name>tags</name>
+  <action></action>
+  <method>POST</method>
+  <enctype></enctype>
+  <encoding>UTF-8</encoding>
+  <stored_encoding>ISO-8859-1</stored_encoding>
+  <unicode_mode>false</unicode_mode>
+  <i18n_domain></i18n_domain>
+  <groups>
+    <group>
+      <title>Default</title>
+      <fields>
+
+      <field><id>subject</id> <type>MultiCheckBoxField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default type="list">[]</default>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra_item></extra_item>
+          <hidden type="int">0</hidden>
+          <items type="list">[('Art and Humanities', 'art_and_humanities'), ('Built Environment', 'built_enviroment'), ('Business, Policy, Leadership and Management', 'bus_po_lead_management'), ('Engineering and Technology', 'engineering_technology'), ('Education', 'education'), ('Languages', 'languages'), ('Law, Crime and Security', 'law_crime_security'), ('Healthcare, Medical and Life Sciences', 'healthcare_medical_life_sciences'), ('Mathematical, Physical and Natural Sciences', 'math_phy_natural_sciences'), ('Social and Historical Sciences', 'social_historical_sciences')]</items>
+          <orientation>vertical</orientation>
+          <required type="int">0</required>
+          <title>subject</title>
+          <unicode type="int">0</unicode>
+          <view_separator>&lt;br /&gt;</view_separator>
+        </values>
+        <tales>
+        <default>python:request.model.get_subject()</default>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="unknown_selection">You selected an item that was not in the list.</message>
+        </messages>
+      </field>
+      <field><id>category</id> <type>MultiCheckBoxField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default type="list">[]</default>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra_item></extra_item>
+          <hidden type="int">0</hidden>
+          <items type="list">[('Executive Eductation', 'Executive_Eductation'), ('Professional Development', 'Professional_Development'), ('Recreational Development', 'Recreational_Development'), ('Summer Schools', 'Summer_Schools')]</items>
+          <orientation>vertical</orientation>
+          <required type="int">0</required>
+          <title>Category</title>
+          <unicode type="int">0</unicode>
+          <view_separator>&lt;br /&gt;</view_separator>
+        </values>
+        <tales>
+          <default>python:request.model.get_category()</default>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="unknown_selection">You selected an item that was not in the list.</message>
+        </messages>
+      </field>
+      <field><id>format</id> <type>MultiCheckBoxField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default type="list">[]</default>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra_item></extra_item>
+          <hidden type="int">0</hidden>
+          <items type="list">[('Online learning', 'Online_learning'), ('Face to Face learning', 'Face_to_Face_learning'), ('Blended learning', 'Blended_learning')]</items>
+          <orientation>vertical</orientation>
+          <required type="int">0</required>
+          <title>Format</title>
+          <unicode type="int">0</unicode>
+          <view_separator>&lt;br /&gt;</view_separator>
+        </values>
+        <tales>
+        <default>python:request.model.get_format()</default>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="unknown_selection">You selected an item that was not in the list.</message>
+        </messages>
+      </field>
+      </fields>
+    </group>
+  </groups>
+</form>

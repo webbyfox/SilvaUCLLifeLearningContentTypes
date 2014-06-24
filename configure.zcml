@@ -49,5 +49,10 @@
     icon="www/users.png"
     />
 
+   <silva:content
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.Tags.Tags"
+    icon="www/tags.png"
+    />
 
 </configure>

@@ -23,4 +23,8 @@ class ICourse(IContainer):
 class ICourseTeam(IContent):
     """Interface for Course Team"""
     pass
+
+class ITags(IContent):
+    """Interface for Tags"""
+    pass
     
