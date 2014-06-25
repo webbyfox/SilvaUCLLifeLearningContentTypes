@@ -28,3 +28,6 @@ class ITags(IContent):
     """Interface for Tags"""
     pass
     
+class IFacets(IContent):
+    """Interface for Tags"""
+    pass

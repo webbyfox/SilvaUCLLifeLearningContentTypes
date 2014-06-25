@@ -55,4 +55,11 @@
     icon="www/tags.png"
     />
 
+   <silva:content
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.Facets.Facets"
+    icon="www/ui-menu.png"
+    />
+
+
 </configure>
