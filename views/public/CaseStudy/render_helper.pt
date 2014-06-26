@@ -11,9 +11,9 @@
 <tal:text tal:content="structure version/content/render" /><br/><br/>
   <p tal:content="version/get_pagetitle" />
   <p tal:content="version/get_shortdescription" />
-  
   <p tal:content="version/get_image" />
   <p tal:content="version/get_document" />
+
 
 
 </tal:comp>

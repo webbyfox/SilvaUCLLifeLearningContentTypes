@@ -61,5 +61,12 @@
     icon="www/ui-menu.png"
     />
 
+  <silva:versionedcontent
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.CaseStudy.CaseStudy"
+    version=".content.CaseStudy.CaseStudyVersion"
+    icon="www/newspaper--arrow.png"
+    />
+
 
 </configure>

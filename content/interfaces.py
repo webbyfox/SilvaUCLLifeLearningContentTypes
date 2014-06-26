@@ -31,3 +31,12 @@ class ITags(IContent):
 class IFacets(IContent):
     """Interface for Tags"""
     pass
+
+class ICaseStudy(IVersionedContent):
+    """Interface for Tags"""
+    pass
+
+
+class ICaseStudyVersion(IVersion):
+    """Interface for Tags"""
+    pass

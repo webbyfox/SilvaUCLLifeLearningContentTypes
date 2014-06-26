@@ -34,7 +34,9 @@ def configureSecurity(root):
         'Add Courses',
         'Add Course Teams',
         'Add Course Tagss',
-        'Add Course Facetss'
+        'Add Course Facetss',
+        'Add Case Studys',
+        'Add Case Study Versions',
         ]
 
     for perm in add_permissions:
@@ -59,6 +61,7 @@ def setupMetadata(root):
             {'type': 'Review', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Page Version', 'chain': 'silva-content , silva-extra'},
+            {'type': 'Case Study Version', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Team', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Tags', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Facets', 'chain': 'silva-content , silva-extra'},
@@ -124,6 +127,12 @@ def registerViews(reg):
     reg.register('public', 'Course Facets', ['public', 'Facets', 'view'])
     reg.register('preview', 'Course Facets', ['public','Facets','preview'])
 
+    # Course Page item
+    reg.register('add', 'Case Study', ['add', 'CaseStudy'])
+    reg.register('edit','Case Study', ['edit', 'VersionedContent','CaseStudy'])
+    reg.register('public', 'Case Study', ['public', 'CaseStudy', 'view'])
+    reg.register('public', 'Case Study Version', ['public', 'CaseStudy', 'view'])
+    reg.register('preview', 'Case Study Version', ['public','CaseStudy','preview'])
 
 def unregisterViews(reg):
     """unregister all the views"""
@@ -140,7 +149,7 @@ def unregisterViews(reg):
         reg.unregister('public', meta_type)
         reg.unregister('add', meta_type)
         reg.unregister('preview', meta_type)
-    for meta_type in ['Course Page',]:
+    for meta_type in ['Course Page', 'Case Study']:
         reg.unregister('edit', meta_type)
         reg.unregister('add', meta_type)
         reg.unregister('public', meta_type)

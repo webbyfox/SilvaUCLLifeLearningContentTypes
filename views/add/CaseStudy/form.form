@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <form>
-  <title>IndigoAttribute</title>
+  <title>CaseStudy</title>
   <row_length>4</row_length>
   <name>add_form</name>
   <action></action>
@@ -28,7 +28,7 @@
            <required type="int">1</required>   
            <css_class></css_class>   
            <default></default>   
-           <title>id</title>   
+           <title>CaseStudyId</title>   
            <truncate type="int">0</truncate>   
            <description>This field cannot be edited</description>    
            <unicode>1</unicode>    
@@ -46,8 +46,8 @@
            <height type="int">1</height>
            <required type="int">1</required>   
            <css_class></css_class>   
-           <default>Case Study</default>   
-           <title>title</title>   
+           <default>Course Title</default>   
+           <title>Title</title>   
            <truncate type="int">0</truncate>   
            <description>Add course title here</description>    
            <unicode>1</unicode>    
