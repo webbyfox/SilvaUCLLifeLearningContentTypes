@@ -1,4 +1,4 @@
-SilvaUCLExampleContentTypes
+UCLLifeLearningContents
 ==========================
   Life learning content types product
   
