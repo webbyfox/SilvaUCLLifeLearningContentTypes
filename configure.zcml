@@ -8,7 +8,7 @@
 
   <silva:extension
     name="SilvaUCLLifeLearningContentTypes" 
-    title="Life Learning Contents"
+    title="Life Learning Content"
     />
 
   <silva:content

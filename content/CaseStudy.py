@@ -96,11 +96,17 @@ class CaseStudy(CatalogedVersionedContent):
         handler = MetaDataSaveHandler()
         parseString(html, handler)
         version = self.get_editable()
+        #version.set_subjects(handler.metadata['subjects'])
+        #version.set_category(handler.metadata['category'])
+        #version.set_format(handler.metadata['format'])
         if ICaseStudyVersion.providedBy(version):
-            version.set_pagetitle(handler.metadata['pagetitle'][0])
+            version.set_subjects(handler.metadata['subjects'])
+            version.set_category(handler.metadata['category'])
+            version.set_format(handler.metadata['format'])
             version.set_shortdescription(handler.metadata['shortdescription'][0])
+    
             version.set_image(handler.metadata['image'][0])
-            version.set_document(handler.metadata['document'][0])
+            version.set_document(handler.metadata['document'][0]) 
          
 
         version.set_title(handler.title)
@@ -114,24 +120,17 @@ class CaseStudyVersion(CatalogedVersion):
 
     def __init__(self,id):
         super(CaseStudyVersion, self).__init__(id)
-        self._pagetitle = ""
+       
         self._shortdescription = ""
+        self._subjects = ""
+        self._category = ""
+        self._format = ""
         self._image = ""
         self._document = ""
         self.content = SilvaXMLAttribute('content') 
         
 
-    # Mutator
-    def set_pagetitle(self,pagetitle):
-        self._pagetitle = pagetitle
-
-    # Accessor
-    def get_pagetitle(self):
-        if not hasattr(self, '_pagetitle'):
-            self._pagetitle = ""
-        else:
-            return self._pagetitle
-
+    
     # Mutator
     def set_shortdescription(self, shortdescription):
         self._shortdescription = shortdescription
@@ -142,6 +141,40 @@ class CaseStudyVersion(CatalogedVersion):
             self._shortdescription = ""
         else:
             return self._shortdescription
+
+    # Mutator
+    def set_subjects(self, subjects):
+        self._subjects  = subjects 
+
+    # Accessor
+    def get_subjects(self):
+        if not hasattr(self, '_subjects'):
+            self._subjects  = ""
+        else:
+            return self._subjects
+
+    # Mutator
+    def set_category(self,category):
+        self._category = category
+
+    # Accessor
+    def get_category(self):
+        if not hasattr(self, '_category'):
+            self._category = ""
+        else:
+            return self._category
+
+    # Mutator
+    def set_format(self,format):
+        self._format = format
+
+    # Accessor
+    def get_format(self):
+        if not hasattr(self, '_format'):
+            self._format = ""
+        else:
+            return self._format
+
   
     # Mutator
     def set_image(self,image):

@@ -29,14 +29,14 @@ class ITags(IContent):
     pass
     
 class IFacets(IContent):
-    """Interface for Tags"""
+    """Interface for Facets"""
     pass
 
 class ICaseStudy(IVersionedContent):
-    """Interface for Tags"""
+    """Interface for Case Study"""
     pass
 
 
 class ICaseStudyVersion(IVersion):
-    """Interface for Tags"""
+    """Interface for Case study version"""
     pass

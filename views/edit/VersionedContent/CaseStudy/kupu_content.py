@@ -54,10 +54,48 @@ xhtml = version.content.editorHTML()
 meta_template = (
     '<meta scheme="http://infrae.com/namespaces/metadata/silva-news" '
     'name="%s" content="%s" />')
-metas = []
 
-if hasattr(version, 'get_pagetitle'):
-    metas.append(meta_template % ('pagetitle', version.get_pagetitle() or ''))
+subjects_list = ['Art and Humanities', 'Built Environment', 'Business, Policy, Leadership and Management', 'Engineering and Technology', 'Education', 'Languages','Law, Crime and Security', 'Healthcare, Medical and Life Sciences', 'Mathematical, Physical and Natural Sciences', 'Social and Historical Sciences', ]
+category_list = ['Executive Eductation',  'Professional Development', 'Recreational Development', 'Summer Schools',]
+format_list = ['Online learning', 'Face to Face learning', 'Blended learning',]
+
+subjects = []
+for id in subjects_list:
+    checked = id in version.get_subjects() and 'true' or 'false'
+    subjects.append('%s|%s|%s' % (
+        entitize_and_escape_pipes(id),
+        entitize_and_escape_pipes(id),
+        checked)
+    )
+
+category = []
+for id in category_list:
+    checked = id in version.get_category() and 'true' or 'false'
+    category.append('%s|%s|%s' % (
+        entitize_and_escape_pipes(id),
+        entitize_and_escape_pipes(id),
+        checked)
+    )
+
+format = []
+for id in format_list:
+    checked = id in version.get_format() and 'true' or 'false'
+    format.append('%s|%s|%s' % (
+        entitize_and_escape_pipes(id),
+        entitize_and_escape_pipes(id),
+        checked)
+    )
+
+subjects = '||'.join(subjects)
+category = '||'.join(category)
+format = '||'.join(format)
+
+metas = [
+    meta_template % ('subjects', subjects),
+    meta_template % ('category', category),
+    meta_template % ('format', format),
+]
+
 
 if hasattr(version, 'get_shortdescription'):
     metas.append(meta_template % ('shortdescription', version.get_shortdescription() or ''))

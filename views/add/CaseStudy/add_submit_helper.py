@@ -10,8 +10,8 @@
 model.manage_addProduct['SilvaUCLLifeLearningContentTypes'].manage_addCaseStudy(id, title)
 casestudy = getattr(model, id)
 version = casestudy.get_editable()
-#version.set_pagetitle(result['pagetitle'])
-#version.set_shortdescription(result['ShortDescription'])
-#version.set_adminname(result['AdminName'])
-# more to follow
+version.set_subjects(result['subjects'])
+version.set_category(result['category'])
+version.set_format(result['format'])
+
 return casestudy
