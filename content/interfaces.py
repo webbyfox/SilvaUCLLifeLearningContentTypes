@@ -40,3 +40,12 @@ class ICaseStudy(IVersionedContent):
 class ICaseStudyVersion(IVersion):
     """Interface for Case study version"""
     pass
+
+class ICourseSubject(IVersionedContent):
+    """Interface for Course Subject Page"""
+    pass
+
+
+class ICourseSubjectVersion(IVersion):
+    """Interface for Course Subject Page version"""
+    pass

@@ -96,9 +96,6 @@ class CaseStudy(CatalogedVersionedContent):
         handler = MetaDataSaveHandler()
         parseString(html, handler)
         version = self.get_editable()
-        #version.set_subjects(handler.metadata['subjects'])
-        #version.set_category(handler.metadata['category'])
-        #version.set_format(handler.metadata['format'])
         if ICaseStudyVersion.providedBy(version):
             version.set_subjects(handler.metadata['subjects'])
             version.set_category(handler.metadata['category'])

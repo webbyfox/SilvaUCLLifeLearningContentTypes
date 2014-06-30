@@ -37,6 +37,8 @@ def configureSecurity(root):
         'Add Course Facetss',
         'Add Case Studys',
         'Add Case Study Versions',
+        'Add Course Subjects',
+        'Add Course Subject Versions',
         ]
 
     for perm in add_permissions:
@@ -65,6 +67,7 @@ def setupMetadata(root):
             {'type': 'Course Team', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Tags', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Facets', 'chain': 'silva-content , silva-extra'},
+            {'type': 'Course Subject Version', 'chain': 'silva-content , silva-extra'},
         )
 
     mapping.editMappings(default, tm)
@@ -134,6 +137,15 @@ def registerViews(reg):
     reg.register('public', 'Case Study Version', ['public', 'CaseStudy', 'view'])
     reg.register('preview', 'Case Study Version', ['public','CaseStudy','preview'])
 
+
+    # Course Subject Page view registry
+    reg.register('add', 'Course Subject', ['add', 'CourseSubject'])
+    reg.register('edit','Course Subject', ['edit', 'VersionedContent','CourseSubject'])
+    reg.register('public', 'Course Subject', ['public', 'CourseSubject', 'view'])
+    reg.register('public', 'Course Subject Version', ['public', 'CourseSubject', 'view'])
+    reg.register('preview', 'Course Subject Version', ['public','CourseSubject','preview'])
+
+
 def unregisterViews(reg):
     """unregister all the views"""
     for meta_type in [
@@ -149,7 +161,7 @@ def unregisterViews(reg):
         reg.unregister('public', meta_type)
         reg.unregister('add', meta_type)
         reg.unregister('preview', meta_type)
-    for meta_type in ['Course Page', 'Case Study']:
+    for meta_type in ['Course Page', 'Case Study', 'Course Subject']:
         reg.unregister('edit', meta_type)
         reg.unregister('add', meta_type)
         reg.unregister('public', meta_type)
