@@ -59,3 +59,12 @@ class IAnouncement(IVersionedContent):
 class IAnouncementVersion(IVersion):
     """Interface for Anouncement version"""
     pass
+
+class IGeneralPage(IVersionedContent):
+    """Interface for General Pages"""
+    pass
+
+
+class IGeneralPageVersion(IVersion):
+    """Interface for General Pages version"""
+    pass

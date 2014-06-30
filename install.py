@@ -41,6 +41,8 @@ def configureSecurity(root):
         'Add Course Subject Versions',
         'Add Anouncements',
         'Add Anouncement Versions',
+        'Add General Pages',
+        'Add General Page Versions',
         ]
 
     for perm in add_permissions:
@@ -71,6 +73,7 @@ def setupMetadata(root):
             {'type': 'Course Facets', 'chain': 'silva-content , silva-extra'},
             {'type': 'Course Subject Version', 'chain': 'silva-content , silva-extra'},
             {'type': 'Anouncement Version', 'chain': 'silva-content , silva-extra'},
+            {'type': 'General Page Version', 'chain': 'silva-content , silva-extra'},
         )
 
     mapping.editMappings(default, tm)
@@ -154,6 +157,12 @@ def registerViews(reg):
     reg.register('public', 'Anouncement Version', ['public', 'Anouncement', 'view'])
     reg.register('preview', 'Anouncement Version', ['public','Anouncement','preview'])
 
+    # General Page view registry
+    reg.register('add', 'General Page', ['add', 'GeneralPage'])
+    reg.register('edit','General Page', ['edit', 'VersionedContent','GeneralPage'])
+    reg.register('public', 'General Page', ['public', 'GeneralPage', 'view'])
+    reg.register('public', 'General Page Version', ['public', 'GeneralPage', 'view'])
+    reg.register('preview', 'General Page Version', ['public','GeneralPage','preview'])
 
 
 def unregisterViews(reg):
@@ -171,7 +180,7 @@ def unregisterViews(reg):
         reg.unregister('public', meta_type)
         reg.unregister('add', meta_type)
         reg.unregister('preview', meta_type)
-    for meta_type in ['Course Page', 'Case Study', 'Course Subject', 'Anouncement']:
+    for meta_type in ['Course Page', 'Case Study', 'Course Subject', 'Anouncement','GeneralPage']:
         reg.unregister('edit', meta_type)
         reg.unregister('add', meta_type)
         reg.unregister('public', meta_type)

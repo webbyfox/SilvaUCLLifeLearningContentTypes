@@ -79,7 +79,15 @@
     extension_name="SilvaUCLLifeLearningContentTypes"
     content=".content.Anouncement.Anouncement"
     version=".content.Anouncement.AnouncementVersion"
-    icon="www/sitemap-application.png"
+    icon="www/megaphone--arrow.png"
     />
     
+
+    <silva:versionedcontent
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.GeneralPage.GeneralPage"
+    version=".content.GeneralPage.GeneralPageVersion"
+    icon="www/receipt-medium.png"
+    />
+
 </configure>
