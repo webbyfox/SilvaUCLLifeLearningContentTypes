@@ -49,3 +49,13 @@ class ICourseSubject(IVersionedContent):
 class ICourseSubjectVersion(IVersion):
     """Interface for Course Subject Page version"""
     pass
+
+
+class IAnouncement(IVersionedContent):
+    """Interface for Anouncement"""
+    pass
+
+
+class IAnouncementVersion(IVersion):
+    """Interface for Anouncement version"""
+    pass

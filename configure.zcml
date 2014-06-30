@@ -74,5 +74,12 @@
     version=".content.CourseSubject.CourseSubjectVersion"
     icon="www/sitemap-application.png"
     />
+
+    <silva:versionedcontent
+    extension_name="SilvaUCLLifeLearningContentTypes"
+    content=".content.Anouncement.Anouncement"
+    version=".content.Anouncement.AnouncementVersion"
+    icon="www/sitemap-application.png"
+    />
     
 </configure>
