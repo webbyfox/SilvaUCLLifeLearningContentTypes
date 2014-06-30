@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<form>
+  <title>CourseSubjectAttributes</title>
+  <row_length>4</row_length>
+  <name>add_form</name>
+  <action></action>
+  <method>POST</method>
+  <enctype></enctype>
+  <encoding>UTF-8</encoding>
+  <stored_encoding>ISO-8859-1</stored_encoding>
+  <unicode_mode>false</unicode_mode>
+  <i18n_domain>Silva</i18n_domain>
+  <i18n>default_form_add</i18n>
+  <groups>
+    <group>
+      <title>Default</title>
+      <fields>
+
+      <field><id>object_id</id> <type>StringField</type>    
+         <values>    
+           <alternate_name></alternate_name>   
+           <hidden type="int">0</hidden>   
+           <max_length></max_length>   
+           <external_validator></external_validator>   
+           <display_maxwidth></display_maxwidth>   
+           <display_width type="int">30</display_width>    
+           <required type="int">1</required>   
+           <css_class></css_class>   
+           <default></default>   
+           <title>SubjectId</title>   
+           <truncate type="int">0</truncate>   
+           <description>This field cannot be edited</description>    
+           <unicode>1</unicode>    
+         </values>   
+         <tales>   
+         </tales>    
+       </field>    
+
+      <field><id>object_title</id> <type>StringField</type>    
+         <values>    
+           <alternate_name></alternate_name>   
+           <hidden type="int">0</hidden>   
+           <max_length></max_length>   
+           <external_validator></external_validator>   
+           <height type="int">1</height>
+           <required type="int">1</required>   
+           <css_class></css_class>   
+           <default>Course Subject Page</default>   
+           <title>Course Subject title</title>   
+           <truncate type="int">0</truncate>   
+           <description>Add course subjecttitle here</description>    
+           <unicode>1</unicode>    
+         </values>   
+         <tales>   
+         </tales>    
+       </field>    
+ 
+
+      </fields>
+    </group>
+  </groups>
+</form>
