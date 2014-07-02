@@ -10,10 +10,10 @@
 
 <tal:text tal:content="structure version/content/render" /><br/><br/>
  
-  <p tal:content="version/get_shortdescription" />
-  <p tal:content="version/get_url" />
-  <p tal:content="version/get_image" />
-  <p tal:content="version/get_document" />
+  <p tal:content="version/get_shortdescription|nothing" />
+  <p tal:content="version/get_url|nothing" />
+  <p tal:content="version/get_image|nothing" />
+  <p tal:content="version/get_document|nothing" />
 
 
 

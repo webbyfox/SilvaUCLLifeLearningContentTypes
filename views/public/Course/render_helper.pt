@@ -1,0 +1,73 @@
+<tal:comp
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="silva_news">
+
+ <tal:object repeat="lo_object python:request.model.objectValues()"> 
+
+
+  <tal:coursepage tal:condition="python:lo_object.getId()== 'index'"
+                  tal:define="container request/model;
+                              model container/get_default;
+                              title model/get_title;
+                              version python:model.get_viewable();
+                              coursepage python:model.get_viewable();
+                               "> 
+
+  <h1><span tal:content="container/get_title" /></h1>
+
+  Course Page Content :
+
+  <p tal:content="structure version/content/render|nothing" />
+ 
+
+   Short Description: <span tal:content="coursepage/get_shortdescription|nothing" />   <br/>
+   Name: <span tal:content="coursepage/get_adminname|nothing" /> <br/>
+   Email: <span tal:content="coursepage/get_adminemail|nothing" /><br/>
+   Admin Telephone: <span tal:content="coursepage/get_shortdescription|nothing" />   <br/>    
+   Timing Access: <span tal:content="coursepage/get_timingaccess|nothing" /><br/>
+   Location : <span tal:content="coursepage/get_location|nothing" /><br/>
+   Location URL: <img  tal:attributes="src coursepage/get_locationurl|nothing" /><br/>
+ 
+   Cost :<span tal:content="coursepage/get_cost|nothing" /><br/>
+   Learning Hours:<span tal:content="coursepage/get_learninghours|nothing" /><br/>
+   Course Duration:<span tal:content="coursepage/get_courseduration|nothing" /><br/>
+
+
+<h3>Partners:</h3>
+<br/>
+  <img tal:attributes="src coursepage/get_partnerimage1|nothing" />
+   <img tal:attributes="src coursepage/get_partnerimage2|nothing" />
+   <img tal:attributes="src coursepage/get_partnerimage3|nothing" />
+
+ </tal:coursepage>
+
+<tal:learning-outcome tal:condition="python:lo_object.getId()== 'learning-outcomes'"
+                      tal:define="container request/model;
+                              model python:context;
+                              title model/get_title;
+                              version python:lo_object.get_viewable();">
+
+  <h1><span tal:content="version/get_title" /></h1>
+
+   <p tal:content="structure version/content" />
+<hr/>
+</tal:learning-outcome>
+
+<tal:faqs tal:condition="python:lo_object.getId()== 'faq'"
+                      tal:define="container request/model;
+                              model python:context;
+                              title model/get_title;
+                              version python:lo_object.get_viewable();">
+
+  <h1><span tal:content="version/get_title" /></h1>
+
+   <p tal:content="structure version/content" />
+
+<hr/>
+</tal:faqs>
+
+</tal:object>
+
+</tal:comp>

@@ -5,11 +5,11 @@
   i18n:domain="silva_news"
   tal:define="model request/model;"> 
 
-    <p tal:content="model/get_subject"/>		
-    <p tal:content="model/get_category"/>
-    <p tal:content="model/get_cost"/>
-    <p tal:content="model/get_start_date"/>
-    <p tal:content="model/get_format"/>
+    <p tal:content="model/get_subject|nothing"/>		
+    <p tal:content="model/get_category|nothing"/>
+    <p tal:content="model/get_cost|nothing"/>
+    <p tal:content="model/get_start_date|nothing"/>
+    <p tal:content="model/get_format|nothing"/>
 
 
 </tal:comp>

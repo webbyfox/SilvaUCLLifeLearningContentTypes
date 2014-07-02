@@ -5,9 +5,9 @@
   i18n:domain="silva_news"
   tal:define="model request/model;"> 
 
-    <p tal:content="model/get_reviewmembername"/>		
-    <p tal:content="model/get_reviewmembertitle"/>
-    <p tal:content="model/get_reviewmemberdescription"/>
-    <p tal:content="model/get_reviewmemberimagepath"/>
+    <p tal:content="model/get_reviewmembername|nothing"/>		
+    <p tal:content="model/get_reviewmembertitle|nothing"/>
+    <p tal:content="model/get_reviewmemberdescription|nothing"/>
+    <p tal:content="model/get_reviewmemberimagepath|nothing"/>
 
 </tal:comp>

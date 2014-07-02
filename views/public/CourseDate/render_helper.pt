@@ -5,9 +5,9 @@
   i18n:domain="silva_news"
   tal:define="model request/model;"> 
 
-    <p tal:content="model/get_applylink"/>		
-    <p tal:content="model/get_coursedate"/>
-    <p tal:content="model/get_online"/>
-    <p tal:content="model/get_status"/>
+    <p tal:content="model/get_applylink|nothing"/>		
+    <p tal:content="model/get_coursedate|nothing"/>
+    <p tal:content="model/get_online|nothing"/>
+    <p tal:content="model/get_status|nothing"/>
 
 </tal:comp>
