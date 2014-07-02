@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <form>
-  <title>IndigoAttribute</title>
+  <title>GeneralPage</title>
   <row_length>4</row_length>
   <name>add_form</name>
   <action></action>
@@ -31,13 +31,14 @@
            <title>PageId</title>   
            <truncate type="int">0</truncate>   
            <description>This field cannot be edited</description>    
-           <unicode>1</unicode>    
+           <unicode>0</unicode>    
          </values>   
          <tales>   
          </tales>    
        </field>    
 
-      <field><id>object_title</id> <type>StringField</type>    
+      <field>
+        <id>object_title</id> <type>StringField</type>    
          <values>    
            <alternate_name>Title</alternate_name>   
            <hidden type="int">0</hidden>   
@@ -50,7 +51,7 @@
            <title>Page Title</title>   
            <truncate type="int">0</truncate>   
            <description>Add course title here</description>    
-           <unicode>1</unicode>    
+           <unicode>0/unicode>    
          </values>   
          <tales>   
          </tales>    

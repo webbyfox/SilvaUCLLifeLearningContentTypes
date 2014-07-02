@@ -9,8 +9,8 @@
 
   <tal:coursepage tal:condition="python:lo_object.getId()== 'index'"
                   tal:define="container request/model;
-          
-                              coursepage python:lo_object.get_viewable();
+                              coursepage python:lo_object.get_viewable() or lo_object.get_editable() ;
+                    
                                "> 
 
   <h1><span tal:content="container/get_title" /></h1>
@@ -21,7 +21,7 @@
  
 
    Short Description: <span tal:content="coursepage/get_shortdescription|nothing" />   <br/>
-   Name: <span tal:content="coursepage/get_adminname|nothing" /> <br/>
+   Name: <span tal:content="version/get_adminname|nothing" /> <br/>
    Email: <span tal:content="coursepage/get_adminemail|nothing" /><br/>
    Admin Telephone: <span tal:content="coursepage/get_shortdescription|nothing" />   <br/>    
    Timing Access: <span tal:content="coursepage/get_timingaccess|nothing" /><br/>
@@ -45,7 +45,7 @@
                       tal:define="container request/model;
                               model python:context;
                               title model/get_title;
-                              version python:lo_object.get_viewable();">
+                              version python:lo_object.get_viewable() or lo_object.get_editable();">
 
   <h1><span tal:content="version/get_title|nothing" /></h1>
 
@@ -57,7 +57,7 @@
                       tal:define="container request/model;
                               model python:context;
                               title model/get_title;
-                              version python:lo_object.get_viewable();">
+                              version python:lo_object.get_viewable() or lo_object.get_editable();">
 
   <h1><span tal:content="version/get_title|nothing" /></h1>
 
