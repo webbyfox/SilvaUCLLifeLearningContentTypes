@@ -56,8 +56,6 @@ meta_template = (
     'name="%s" content="%s" />')
 metas = []
 
-if hasattr(version, 'get_pagetitle'):
-    metas.append(meta_template % ('pagetitle', version.get_pagetitle() or ''))
 
 if hasattr(version, 'get_shortdescription'):
     metas.append(meta_template % ('shortdescription', version.get_shortdescription() or ''))

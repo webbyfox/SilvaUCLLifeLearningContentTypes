@@ -97,7 +97,6 @@ class CoursePage(CatalogedVersionedContent):
         parseString(html, handler)
         version = self.get_editable()
         if ICoursePageVersion.providedBy(version):
-            version.set_pagetitle(handler.metadata['pagetitle'][0])
             version.set_shortdescription(handler.metadata['shortdescription'][0])
             version.set_adminname(handler.metadata['adminname'][0])
             version.set_adminemail(handler.metadata['adminemail'][0])
@@ -123,7 +122,6 @@ class CoursePageVersion(CatalogedVersion):
 
     def __init__(self,id):
         super(CoursePageVersion, self).__init__(id)
-        self._pagetitle = ""
         self._shortdescription = ""
         self._adminname = ""
         self._adminemail = ""
@@ -140,16 +138,7 @@ class CoursePageVersion(CatalogedVersion):
         self.content = SilvaXMLAttribute('content') 
         
 
-    # Mutator
-    def set_pagetitle(self,pagetitle):
-        self._pagetitle = pagetitle
-
-    # Accessor
-    def get_pagetitle(self):
-        if not hasattr(self, '_pagetitle'):
-            self._pagetitle = ""
-        else:
-            return self._pagetitle
+  
 
     # Mutator
     def set_shortdescription(self, shortdescription):

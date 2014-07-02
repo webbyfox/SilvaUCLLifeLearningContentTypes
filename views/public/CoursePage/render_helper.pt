@@ -9,7 +9,7 @@
   <p tal:content="version/get_title|nothing" />
 
 <tal:text tal:content="structure version/content/render|nothing" /><br/><br/>
-  <p tal:content="version/get_pagetitle|nothing" />
+
   <p tal:content="version/get_shortdescription|nothing" />
   <p tal:content="version/get_adminname|nothing" />
   <p tal:content="version/get_adminemail|nothing" />
