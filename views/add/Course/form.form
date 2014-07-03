@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+
+<form>
+  <title>CaseStudy</title>
+  <row_length>4</row_length>
+  <name>add_form</name>
+  <action></action>
+  <method>POST</method>
+  <enctype></enctype>
+  <encoding>UTF-8</encoding>
+  <stored_encoding>ISO-8859-1</stored_encoding>
+  <unicode_mode>false</unicode_mode>
+  <i18n_domain>Silva</i18n_domain>
+  <i18n>default_form_add</i18n>
+  <groups>
+    <group>
+      <title>Default</title>
+      <fields>
+
+      <field><id>object_id</id> <type>StringField</type>    
+         <values>    
+           <alternate_name></alternate_name>   
+           <hidden type="int">0</hidden>   
+           <max_length></max_length>   
+           <external_validator></external_validator>   
+           <display_maxwidth></display_maxwidth>   
+           <display_width type="int">30</display_width>    
+           <required type="int">1</required>   
+           <css_class></css_class>   
+           <default></default>   
+           <title>CaseStudyId</title>   
+           <truncate type="int">0</truncate>   
+           <description>This field cannot be edited</description>    
+           <unicode>1</unicode>    
+         </values>   
+         <tales>   
+         </tales>    
+       </field>    
+
+      <field><id>object_title</id> <type>StringField</type>    
+         <values>    
+           <alternate_name>Title</alternate_name>   
+           <hidden type="int">0</hidden>   
+           <max_length></max_length>   
+           <external_validator></external_validator>   
+           <height type="int">1</height>
+           <required type="int">1</required>   
+           <css_class></css_class>   
+           <default></default>   
+           <title>Title</title>   
+           <truncate type="int">0</truncate>   
+           <description>Add case study title here</description>    
+           <unicode>1</unicode>    
+         </values>   
+         <tales>   
+         </tales>    
+       </field>    
+      
+    <field><id>subjects</id> <type>MultiCheckBoxField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default type="list">[]</default>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra_item></extra_item>
+          <hidden type="int">0</hidden>
+          <items type="list">[('Art and Humanities', 'Art and Humanities'), ('Built Environment', 'Built Environment'), ('Business, Policy, Leadership and Management', 'Business, Policy, Leadership and Management'), ('Engineering and Technology', 'Engineering and Technology'), ('Education', 'Education'), ('Languages', 'Languages'), ('Law, Crime and Security', 'Law, Crime and Security'), ('Healthcare, Medical and Life Sciences', 'Healthcare, Medical and Life Sciences'), ('Mathematical, Physical and Natural Sciences', 'Mathematical, Physical and Natural Sciences'), ('Social and Historical Sciences', 'Social and Historical Sciences')]</items>
+          <orientation>vertical</orientation>
+          <required type="int">0</required>
+          <title>Subject</title>
+          <unicode type="int">0</unicode>
+          <view_separator>&lt;br /&gt;</view_separator>
+        </values>
+        <tales>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="unknown_selection">You selected an item that was not in the list.</message>
+        </messages>
+      </field>
+      <field><id>category</id> <type>MultiCheckBoxField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default type="list">[]</default>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra_item></extra_item>
+          <hidden type="int">0</hidden>
+          <items type="list">[('Executive Eductation', 'Executive Eductation'), ('Professional Development', 'Professional Development'), ('Recreational Development', 'Recreational Development'), ('Summer Schools', 'Summer Schools')]</items>
+          <orientation>vertical</orientation>
+          <required type="int">0</required>
+          <title>Category</title>
+          <unicode type="int">0</unicode>
+          <view_separator>&lt;br /&gt;</view_separator>
+        </values>
+        <tales>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="unknown_selection">You selected an item that was not in the list.</message>
+        </messages>
+      </field>
+      <field><id>format</id> <type>MultiCheckBoxField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default type="list">[]</default>
+          <description></description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra_item></extra_item>
+          <hidden type="int">0</hidden>
+          <items type="list">[('Online learning', 'Online learning'), ('Face to Face learning', 'Face to Face learning'), ('Blended learning', 'Blended learning')]</items>
+          <orientation>vertical</orientation>
+          <required type="int">0</required>
+          <title>Format</title>
+          <unicode type="int">0</unicode>
+          <view_separator>&lt;br /&gt;</view_separator>
+        </values>
+        <tales>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="unknown_selection">You selected an item that was not in the list.</message>
+        </messages>
+      </field>
+
+      </fields>
+    </group>
+  </groups>
+</form>

@@ -22,12 +22,50 @@ class Course(Folder):
 	security = ClassSecurityInfo()
 
 	def __init__(self, id):
+		
 		Course.inheritedAttribute('__init__')(self, id)
+		
+		self._subjects = ""
+		self._category = ""
+		self._format = ""
 
 	security.declareProtected(SilvaPermissions.AccessContentsInformation, 'get_components')
 	def get_components(self):
 		filtered_items = list(self.filter_entries(self.get_orderded_publishables()))
 		return filtered_items
+
+	# Mutator
+	def set_subjects(self, subjects):
+		self._subjects  = subjects 
+
+	# Accessor
+	def get_subjects(self):
+		if not hasattr(self, '_subjects'):
+			self._subjects  = ""
+		else:
+			return self._subjects
+
+	# Mutator
+	def set_category(self,category):
+		self._category = category
+
+	# Accessor
+	def get_category(self):
+		if not hasattr(self, '_category'):
+			self._category = ""
+		else:
+			return self._category
+
+	# Mutator
+	def set_format(self,format):
+		self._format = format
+
+	# Accessor
+	def get_format(self):
+		if not hasattr(self, '_format'):
+			self._format = ""
+		else:
+			return self._format
 
 InitializeClass(Course)
 
