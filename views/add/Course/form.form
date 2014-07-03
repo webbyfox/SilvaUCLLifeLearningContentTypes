@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <form>
-  <title>CaseStudy</title>
+  <title>Course</title>
   <row_length>4</row_length>
   <name>add_form</name>
   <action></action>
@@ -28,7 +28,7 @@
            <required type="int">1</required>   
            <css_class></css_class>   
            <default></default>   
-           <title>CaseStudyId</title>   
+           <title>CourseId</title>   
            <truncate type="int">0</truncate>   
            <description>This field cannot be edited</description>    
            <unicode>1</unicode>    
@@ -49,7 +49,7 @@
            <default></default>   
            <title>Title</title>   
            <truncate type="int">0</truncate>   
-           <description>Add case study title here</description>    
+           <description>Add course title here</description>    
            <unicode>1</unicode>    
          </values>   
          <tales>   

@@ -10,9 +10,9 @@
 model.manage_addProduct['SilvaUCLLifeLearningContentTypes'].manage_addCourse(id, title)
 
 course  = getattr(model, id)
-version = course.get_editable()
-version.set_subjects(result['subjects'])
-version.set_category(result['category'])
-version.set_format(result['format'])
+#version = course.get_editable()
+course.set_subjects(result['subjects'])
+course.set_category(result['category'])
+course.set_format(result['format'])
 
 return course
