@@ -6,14 +6,85 @@
   tal:define="model request/model;
               version options/version"> 
 
-  <p tal:content="version/get_title|nothing" />
 
-<tal:text tal:content="structure version/content/render" /><br/><br/>
-  <p tal:content="version/get_pagetitle|nothing" />
-  <p tal:content="version/get_shortdescription|nothing" />
+<tal:content tal:define="global publicationdate python: version.get_metadata_element('silva-extra', 'publicationtime');
+  global modifiedtime python: version.get_metadata_element('silva-extra', 'modificationtime');" />
+
+
+ <nav id="breadcrumb" class="clearfix">
+  <ul><li>UCL LIFE LEARNING</li><li>CASE STUDIES</li><li> <span tal:content="version/get_title"></span></li></ul>
+ </nav>
+ <div class="hero">
+  <div class="hero__title">
+     <h1><span tal:content="version/get_title|nothing" ></span></h1>
+  </div>
+
+  <section class="clearfix">
+    
+    <article class="layout__content">
+      <p class="meta news_date" 
+          tal:content="python:publicationdate.strftime('%d %B %Y')">31 January 2014</p>
+      <tal:text tal:content="structure python:here.get_advances_text(version, request)" />
+<br/><br/>
+
+
+    <h2>Share</h2>
+    <ul class="nav nav--gapped share">
+    <li>
+        <a tal:attributes="href python:'https://www.facebook.com/sharer.php?u='+ str(context.absolute_url()) + '&t=' +  str(version.get_title())" class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-facebook"/>
+        Facebook
+        </a>
+    </li>
+    <li>
+        <a tal:attributes="href python:'https://twitter.com/share?url= ' + str(context.absolute_url()) +'&text=' +  str(version.get_title()) +'&via=ucladvances'" class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-twitter"/>
+        Twitter
+        </a>
+    </li>
+    <li>
+        <a tal:attributes="href python:'http://www.linkedin.com/shareArticle?mini=true&url='+  str(context.absolute_url()) + '&title='+  str(version.get_title()) +'&source=UCL%20Advances'" class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-linkedin"/>
+        LinkedIn
+        </a>
+    </li>
+    </ul>
+    <p class="mod">
+    Page last modified on
+    <span style="text-transform: capitalize;"><tal:content content="python:modifiedtime.strftime('%d %B %Y %H:%M')" /></span>
+    </p>
+
+
+    </article>
+
+    <aside class="layout__sidebar">
+      <article class="news">
+        <h2 class="news__header">Latest announcements</h2>
+
+          <ul class="news__list">
+            <li itemscope="" itemtype="http://schema.org/Article" class="news__list__item media">
+              <a href="/latest-announcements/digital-and-social-media-for-small-businesses">
+              <img src="http://lorempixel.com/48/48/technics/1" alt="" class="news__list__thumb media__aside"/></a>
+
+              <div class="media__body">
+                <p class="meta news_date">
+                  23 September 2013,
+                  <span class="time">18:15</span>
+                  </p>
+                <h3><a href="/latest-announcements/digital-and-social-media-for-small-businesses">Digital and Social Media for Small Businesses</a>
+                </h3>
+              <p>This one-day workshop will ensure that your business has the insight and knowledge to successfully utilize the various digital and social media tools available.</p>
+              </div>
+            </li>
+          </ul>
+
+
+
+      </article>
+    </aside>
+
   <p tal:content="version/get_image|nothing" />
   <p tal:content="version/get_document|nothing" />
-
 
 
 </tal:comp>
