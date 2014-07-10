@@ -10,8 +10,9 @@
 model.manage_addProduct['SilvaUCLLifeLearningContentTypes'].manage_addCoursePage(id, title)
 coursepage = getattr(model, id)
 version = coursepage.get_editable()
-#version.set_pagetitle(result['pagetitle'])
-#version.set_shortdescription(result['ShortDescription'])
-#version.set_adminname(result['AdminName'])
-# more to follow
+
+course.set_subjects(result['subjects'])
+course.set_category(result['category'])
+course.set_format(result['format'])
+
 return coursepage

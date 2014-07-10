@@ -12,7 +12,10 @@
 
 
  <nav id="breadcrumb" class="clearfix">
-  <ul><li>UCL LIFE LEARNING</li><li>CASE STUDIES</li><li> <span tal:content="version/get_title"></span></li></ul>
+  <ul>
+      <li><a href="/">UCL LIFE LEARNING</a></li>
+      <li><a href="/case-studies">CASE STUDIES</a></li>
+      <li> <span tal:content="version/get_title"></span></li></ul>
  </nav>
  <div class="hero">
   <div class="hero__title">
@@ -62,28 +65,40 @@
         <h2 class="news__header">Latest announcements</h2>
 
           <ul class="news__list">
-            <li itemscope="" itemtype="http://schema.org/Article" class="news__list__item media">
-              <a href="/latest-announcements/digital-and-social-media-for-small-businesses">
-              <img src="http://lorempixel.com/48/48/technics/1" alt="" class="news__list__thumb media__aside"/></a>
+                <li  tal:repeat="announcements 
+                          python:context.service_catalog( 
+                          meta_type={'query':'Anouncement Version'},
+                          path={'query' : '/Silva/lifelearning', 'depth' :0},
+                          version_status = 'public')[:3]" 
+                         itemscope="" 
+                         itemtype="http://schema.org/Article" 
+                         class="news__list__item media">
+
+             <tal:getobject define="announcement python:announcements.getObject();
+               global publicationdate python: announcement.get_metadata_element('silva-extra', 'publicationtime');" >           
+              <a tal:attributes="href python:announcement.silva_object_url()">
+              <img tal:attributes="src python:announcement.get_image()" alt="" class="news__list__thumb media__aside"/></a>
 
               <div class="media__body">
                 <p class="meta news_date">
-                  23 September 2013,
-                  <span class="time">18:15</span>
+                  <tal:content content="python:publicationdate.strftime('%d %B %Y, %H:%M')" />
                   </p>
-                <h3><a href="/latest-announcements/digital-and-social-media-for-small-businesses">Digital and Social Media for Small Businesses</a>
+                <h3><a tal:attributes="href python:announcement.silva_object_url()">
+                        <tal:content tal:content="python:announcement.get_title()" />
+                     </a>
                 </h3>
-              <p>This one-day workshop will ensure that your business has the insight and knowledge to successfully utilize the various digital and social media tools available.</p>
+              <span><tal:content content="structure python:context.get_advances_text(announcement.content, request)[:200]" /></span>
               </div>
+          </tal:getobject>
             </li>
+  
           </ul>
-
+         <a href="/latest-announcements" class="news__list__flag flag">More Latest announcements</a>
 
 
       </article>
     </aside>
 
-  <p tal:content="version/get_image|nothing" />
   <p tal:content="version/get_document|nothing" />
 
 

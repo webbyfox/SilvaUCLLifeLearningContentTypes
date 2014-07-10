@@ -6,14 +6,120 @@
   tal:define="model request/model;
               version options/version"> 
 
-  <p tal:content="version/get_title" />
 
-<tal:text tal:content="structure version/content/render" /><br/><br/>
- 
-  <p tal:content="version/get_shortdescription|nothing" />
-  <p tal:content="version/get_image|nothing" />
+<tal:content tal:define="global publicationdate python: version.get_metadata_element('silva-extra', 'publicationtime');
+  global modifiedtime python: version.get_metadata_element('silva-extra', 'modificationtime');" />
+
+
+ <nav id="breadcrumb" class="clearfix">
+  <ul>
+    <li><a href="/">UCL LIFE LEARNING</a></li>
+    <li><a href="/latest-announcements">LATEST ANNOUNCEMENTS<a/></li>
+    <li> <span tal:content="version/get_title"></span></li>
+  </ul>
+ </nav>
+ <div class="hero">
+  <div class="hero__title">
+     <h1><span tal:content="version/get_title|nothing" ></span></h1>
+  </div>
+
+
+  <section class="clearfix">
+    
+    <article class="layout__content">
+      <p class="meta news_date" 
+          tal:content="python:publicationdate.strftime('%d %B %Y')">31 January 2014</p>
+      <tal:text tal:content="structure python:here.get_advances_text(version, request)" />
+<br/><br/>
+
+
+    <h2>Share</h2>
+    <ul class="nav nav--gapped share">
+    <li>
+        <a tal:attributes="href python:'https://www.facebook.com/sharer.php?u='+ str(context.absolute_url()) + '&t=' +  str(version.get_title())" class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-facebook"/>
+        Facebook
+        </a>
+    </li>
+    <li>
+        <a tal:attributes="href python:'https://twitter.com/share?url= ' + str(context.absolute_url()) +'&text=' +  str(version.get_title()) +'&via=ucladvances'" class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-twitter"/>
+        Twitter
+        </a>
+    </li>
+    <li>
+        <a tal:attributes="href python:'http://www.linkedin.com/shareArticle?mini=true&url='+  str(context.absolute_url()) + '&title='+  str(version.get_title()) +'&source=UCL%20Advances'" class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-linkedin"/>
+        LinkedIn
+        </a>
+    </li>
+    </ul>
+    <p class="mod">
+    Page last modified on
+    <span style="text-transform: capitalize;"><tal:content content="python:modifiedtime.strftime('%d %B %Y %H:%M')" /></span>
+    </p>
+
+
+    </article>
+
+    <aside class="layout__sidebar">
+
+      <article class="case-study blurb" role="article" tal:repeat="item 
+                          python:context.service_catalog( 
+                          meta_type={'query':'Case Study Version'},
+                          path={'query' : '/Silva/lifelearning', 'depth' :0},
+                          version_status = 'public')[:1]" >
+
+                     <span tal:define="item python:item.getObject()" >     
+                        <p class="meta photo">
+                            <a href="/case-studies/phd-success" class="flag">Case Study</a>
+                        </p>
+                        <img tal:attributes="src python:item.get_image()"  alt="">
+                        <h2 class="case-study__heading">
+                            <a tal:attributes="href python:item.silva_object_url()"><tal:content content="item/get_title" /></a>
+                        </h2>
+                    </span>
+      </article>
+
+      <article class="news">
+        <h2 class="news__header">Latest announcements</h2>
+
+          <ul class="news__list">
+                <li  tal:repeat="announcements 
+                          python:context.service_catalog( 
+                          meta_type={'query':'Anouncement Version'},
+                          path={'query' : '/Silva/lifelearning', 'depth' :0},
+                          version_status = 'public')[:3]" 
+                         itemscope="" 
+                         itemtype="http://schema.org/Article" 
+                         class="news__list__item media">
+
+             <tal:getobject define="announcement python:announcements.getObject();
+               global publicationdate python: announcement.get_metadata_element('silva-extra', 'publicationtime');" >           
+              <a tal:attributes="href python:announcement.silva_object_url()">
+              <img tal:attributes="src python:announcement.get_image()" alt="" class="news__list__thumb media__aside"/></a>
+
+              <div class="media__body">
+                <p class="meta news_date">
+                  <tal:content content="python:publicationdate.strftime('%d %B %Y, %H:%M')" />
+                  </p>
+                <h3><a tal:attributes="href python:announcement.silva_object_url()">
+                        <tal:content tal:content="python:announcement.get_title()" />
+                     </a>
+                </h3>
+              <span><tal:content content="structure python:context.get_advances_text(announcement.content, request)[:200]" /></span>
+              </div>
+          </tal:getobject>
+            </li>
+  
+          </ul>
+         <a href="/latest-announcements" class="news__list__flag flag">More Latest announcements</a>
+
+
+      </article>
+    </aside>
+
   <p tal:content="version/get_document|nothing" />
-
 
 
 </tal:comp>

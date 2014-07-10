@@ -13,7 +13,10 @@ EDITABLE_METADATA = {
         {name: 'partnerimage3', type: 'reference', mandatory: 0, title: 'Partner Image 3',lookup: 'Silva Image'},
         {name: 'cost', type: 'text', mandatory: 0, title: 'Cost'},
     	{name: 'learninghours', type: 'text', mandatory: 0, title: 'Learning Hours'},
-    	{name: 'courseduration', type: 'text', mandatory: 0, title: 'Course Duration'}
+    	{name: 'courseduration', type: 'text', mandatory: 0, title: 'Course Duration'},
+        {name: 'subjects', type: 'checkbox', mandatory: 0, title: 'Subjects'},
+        {name: 'category', type: 'checkbox', mandatory: 0, title: 'Category'},
+        {name: 'format', type: 'checkbox', mandatory: 0, title: 'Format'},
     		
     ]
 };

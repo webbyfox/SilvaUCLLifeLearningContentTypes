@@ -46,10 +46,10 @@
            <height type="int">1</height>
            <required type="int">1</required>   
            <css_class></css_class>   
-           <default>Case Study</default>   
+           <default></default>   
            <title>title</title>   
            <truncate type="int">0</truncate>   
-           <description>Add course title here</description>    
+           <description>Add annoucement title here</description>    
            <unicode>1</unicode>    
          </values>   
          <tales>   

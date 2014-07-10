@@ -110,6 +110,9 @@ class CoursePage(CatalogedVersionedContent):
             version.set_cost(handler.metadata['cost'][0])
             version.set_learninghours(handler.metadata['learninghours'][0])
             version.set_courseduration(handler.metadata['courseduration'][0])
+            version.set_subjects(handler.metadata['subjects'])
+            version.set_category(handler.metadata['category'])
+            version.set_format(handler.metadata['format'])
 
         version.set_title(handler.title)
 
@@ -135,6 +138,9 @@ class CoursePageVersion(CatalogedVersion):
         self._cost = ""
         self._learninghours = ""
         self._courseduration = ""
+        self._subjects = ""
+        self._category = ""
+        self._format = ""
         self.content = SilvaXMLAttribute('content') 
         
 
@@ -288,6 +294,39 @@ class CoursePageVersion(CatalogedVersion):
             self._courseduration = ""
         else:
             return self._courseduration
+
+    # Mutator
+    def set_subjects(self, subjects):
+        self._subjects  = subjects 
+
+    # Accessor
+    def get_subjects(self):
+        if not hasattr(self, '_subjects'):
+            self._subjects  = ""
+        else:
+            return self._subjects
+
+    # Mutator
+    def set_category(self,category):
+        self._category = category
+
+    # Accessor
+    def get_category(self):
+        if not hasattr(self, '_category'):
+            self._category = ""
+        else:
+            return self._category
+
+    # Mutator
+    def set_format(self,format):
+        self._format = format
+
+    # Accessor
+    def get_format(self):
+        if not hasattr(self, '_format'):
+            self._format = ""
+        else:
+            return self._format
      
                 
 InitializeClass(CoursePage)
