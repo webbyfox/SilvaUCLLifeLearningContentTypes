@@ -1,0 +1,27 @@
+<!-- Macro to link social networks -->
+<section class="page-section clearfix"
+         metal:define-macro="social"
+         tal:define="content_url request/model/absolute_url;
+                     content_title request/model/get_title">
+  <h2>Share</h2>
+  <ul class="nav nav--gapped share">
+    <li>
+      <a tal:attributes="href string:https://www.facebook.com/sharer.php?u=${content_url}&amp;t=${content_title}"  class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-facebook"/>
+        <span class="hidden-on-mobile">Facebook</span>
+      </a>
+    </li>
+    <li>
+      <a tal:attributes="href string:https://twitter.com/share?url=${content_url}&amp;text=${content_title}&amp;via=ucladvances" class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-twitter"></span>
+        <span class="hidden-on-mobile">Twitter</span>
+      </a>
+    </li>
+    <li>
+      <a tal:attributes="href string:http://www.linkedin.com/shareArticle?mini=true&amp;url=${content_url}&amp;title=${content_title}&amp;source=UCL%20Advances" class="btn btn-small" rel="nofollow" target="_blank">
+        <span aria-hidden="true" class="icon icon-linkedin"></span>
+        <span class="hidden-on-mobile">LinkedIn</span>
+      </a>
+    </li>
+  </ul>
+</section>

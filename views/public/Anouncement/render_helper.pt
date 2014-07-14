@@ -67,7 +67,7 @@
       <article class="case-study blurb" role="article" tal:repeat="item 
                           python:context.service_catalog( 
                           meta_type={'query':'Case Study Version'},
-                          path={'query' : '/Silva/lifelearning', 'depth' :0},
+                          path={'query' : '/silva/lifelearning', 'depth' :0},
                           version_status = 'public')[:1]" >
 
                      <span tal:define="item python:item.getObject()" >     
@@ -88,7 +88,7 @@
                 <li  tal:repeat="announcements 
                           python:context.service_catalog( 
                           meta_type={'query':'Anouncement Version'},
-                          path={'query' : '/Silva/lifelearning', 'depth' :0},
+                          path={'query' : '/silva/lifelearning', 'depth' :0},
                           version_status = 'public')[:3]" 
                          itemscope="" 
                          itemtype="http://schema.org/Article" 

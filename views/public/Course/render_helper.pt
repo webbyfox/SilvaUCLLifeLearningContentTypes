@@ -4,75 +4,231 @@
   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
   i18n:domain="silva_news">
 
- <tal:object repeat="lo_object python:request.model.objectValues()"> 
+
+<tal:coursepage  
+       tal:define="global container request/model;
+                   global coursepage python:context.service_catalog(meta_type='Course Page Version',
+                                      path='/'.join(container.getPhysicalPath()), 
+                                      version_status= 'public',
+                                       )[0].getObject();"
+                    /> 
+  
+   <div class="hero">
+      <div class="hero__body">                                      
+
+        <h1><span tal:content="container/get_title" /></h1>
+       
+        <ul class="tags"
+            tal:define="tag_class python:{
+            'Art and Humanities':'icon-languages', 
+            'Built Environment':'icon-built-environment', 
+            'Business, Policy, Leadership and Management':'icon-business', 
+            'Engineering and Technology':'icon-engineering', 
+            'Education':'icon-education', 
+            'Languages':'icon-languages', 
+            'Law, Crime and Security':'icon-law', 
+            'Healthcare, Medical and Life Sciences':'icon-medical', 
+            'Mathematical, Physical and Natural Sciences':'icon-maths-physics', 
+            'Social and Historical Sciences':'icon-social-historical',
+            'Executive Eductation':'icon-executive-education', 
+            'Professional Development':'icon-professional-development', 
+            'Recreational Development':'icon-personal-development',
+            'Summer Schools':'icon-summer-school', 
+            'Online learning':'icon-online', 
+            'Face to Face learning':'icon-face-to-face', 
+            'Blended learning':'icon-blended', 
+            }
+            ">
+                <li tal:repeat="item coursepage/get_subjects">
+
+                            <span tal:condition="item" href="#" class="tags__item tags__item--industry"
+                                  tal:define="class python:tag_class.get(item)" >
+                                <span aria-hidden="true" tal:attributes="class string:icon ${class}">
+                                </span>
+                                   <tal:content content="item" />
+                            </span>
+                        </li>
+                        <li tal:repeat="item coursepage/get_category" >
+                            <span tal:condition="item" href="#" class="tags__item tags__item--type"
+                                  tal:define="class python:tag_class.get(item)" >
+                                <span aria-hidden="true" tal:attributes="class string:icon ${class}">
+                                </span>
+                                <tal:content content="item" />
+                            </span>
+                        </li>
+                        <li tal:repeat="item coursepage/get_format">
+                            <span tal:condition="item" href="#" class="tags__item tags__item--method"
+                                 tal:define="class python:tag_class.get(item)" >
+                                <span aria-hidden="true" tal:attributes="class string:icon ${class}">
+                                </span>
+                                <tal:content content="item" />
+                            </span>
+                        </li>        
+         </ul>
+
+      </div>
+  </div>
+  
+ <section class="block block--full-width feature--grey--lighten">
+     <article class="layout__content">
+          <tal:text tal:content="structure python:here.get_advances_text(coursepage, request)" />
+
+           <div class="course-teacher box--alt tagged">
+                  <div class="tag">Course team</div>
+          <tal:courseteam 
+               repeat="courseteam python:context.service_catalog(meta_type='Course Team',
+                                path='/'.join(container.getPhysicalPath()), )">
+            <tal:teamcontent define="courseteam python:courseteam.getObject()" >
+
+              
+                  <div class="media">
+                      <a href="#">
+                          <img tal:attributes="src python:courseteam.get_image() or '/images/default-avatar.jpg'" alt="" class="media__aside">
+                      </a>
+                      <div class="media__body">
+                          <h3><tal:content content="courseteam/get_fullname" /></h3>
+                          <p><tal:content content="structure courseteam/get_description"/></p>
+                      </div>
+                 
+                  </div>
+
+          </tal:teamcontent>
+
+          </tal:courseteam>
+
+                  
+              </div> 
+
+           
+
+        
 
 
-  <tal:coursepage tal:condition="python:lo_object.getId()== 'index'"
-                  tal:define="container request/model;
-                              coursepage python:lo_object.get_viewable() or lo_object.get_editable();
-                              "> 
-
-  <h1><span tal:content="container/get_title" /></h1>
-
-  <p tal:content="structure coursepage/content/render|nothing" />
- 
-
-   Short Description: <span tal:content="coursepage/get_shortdescription|nothing" />   <br/>
-
-   <br/><br/>
-
-   Name: <span tal:content="version/get_adminname|nothing" /> <br/>
-   Email: <span tal:content="coursepage/get_adminemail|nothing" /><br/>
-   Admin Telephone: <span tal:content="coursepage/admin_telephone|nothing" />   <br/>   
-
-  <br/><br/>
-
-   Timing Access: <span tal:content="coursepage/get_timingaccess|nothing" /><br/>
-
-  <br/><br/>
 
 
-   Location : <span tal:content="coursepage/get_location|nothing" /><br/>
-   <img  tal:attributes="src coursepage/get_locationurl|nothing" /><br/>
- 
-   Cost :<span tal:content="coursepage/get_cost|nothing" /><br/>
-   Learning Hours:<span tal:content="coursepage/get_learninghours|nothing" /><br/>
-   Course Duration:<span tal:content="coursepage/get_courseduration|nothing" /><br/>
 
 
-<h3>Partners:</h3>
-<br/>
-  <img tal:attributes="src coursepage/get_partnerimage1|nothing" />
-   <img tal:attributes="src coursepage/get_partnerimage2|nothing" />
-   <img tal:attributes="src coursepage/get_partnerimage3|nothing" />
 
- </tal:coursepage>
 
-<tal:learning-outcome tal:condition="python:lo_object.getId()== 'learning-outcomes'"
-                      tal:define="container request/model;
-                              model python:context;
-                              title model/get_title;
-                              version python:lo_object.get_viewable() or lo_object.get_editable();">
+<tal:repeat repeat="static_object python:request.model.objectValues()"> 
+      <tal:learning-outcome tal:condition="python:static_object.getId()=='faq'"
+                            tal:define="container request/model;
+                                    model python:context;
+                                    title model/get_title;
+                                    version python:static_object.get_viewable() or static_object.get_editable();">
+          <div class="box--alt">
+                <h3>Frequently asked questions</h3>
+                <p tal:content="structure version/content|nothing" />
+          </div>
 
-  <h1><span tal:content="version/get_title|nothing" /></h1>
+      </tal:learning-outcome>
 
-   <p tal:content="structure version/content|nothing" />
-<hr/>
-</tal:learning-outcome>
+      <tal:faqs tal:condition="python:static_object.getId()== 'learning-outcomes'"
+                            tal:define="container request/model;
+                                    model python:context;
+                                    title model/get_title;
+                                    version python:static_object.get_viewable() or static_object.get_editable();">
+       <div class="box--alt">
+         <h3>Learning outcomes</h3>
+               <p tal:content="structure version/content|nothing" />
+      </div>
+      </tal:faqs>
+</tal:repeat>
 
-<tal:faqs tal:condition="python:lo_object.getId()== 'faq'"
-                      tal:define="container request/model;
-                              model python:context;
-                              title model/get_title;
-                              version python:lo_object.get_viewable() or lo_object.get_editable();">
 
-  <h1><span tal:content="version/get_title|nothing" /></h1>
 
-   <p tal:content="structure version/content|nothing" />
+        <h2>Partners</h2>
+         <ul class="partners">
+            <li class="partners__item">
+              <img tal:attributes="src coursepage/get_partnerimage1|nothing" />
+            </li>
+              <li class="partners__item">
+              <img tal:attributes="src coursepage/get_partnerimage2|nothing" />
+            </li>
+             <li class="partners__item">
+              <img tal:attributes="src coursepage/get_partnerimage3|nothing" />
+            </li>
+         </ul>
 
-<hr/>
-</tal:faqs>
+    <metal:socialshare metal:use-macro="here/util_macro/macros/social" />
 
-</tal:object>
+</article>
 
+
+ <div class="layout__sidebar">
+
+   <article class="sidebar__item box--alt box--alt--small box--alt--rounded course-costs">
+                        <h2 class="price">Cost: from &pound;<span tal:content="coursepage/get_cost|nothing" /></h2>
+    </article>
+
+
+ <article class="sidebar__item box--alt box--alt--small box--alt--rounded course-dates">
+                        <h3>Availability</h3>
+                        <ul class="sidebar__item__list course-dates__list" 
+               define="coursedate python:context.service_catalog(meta_type='Course Date',
+                                path='/'.join(container.getPhysicalPath()), )">
+                            <li class="course-dates__list__item">
+                                <a href="#">
+                                    <span class="icon icon-online" aria-hidden="true"></span>
+                                    <span class="course-date-extra">Available </span>Online
+                                    <span class="pill pill--button">Apply</span>
+                                </a>
+                            </li>
+                            <li class="course-dates__list__item">
+                                <a href="#">
+                                    <time datetime="2014-09-10">10th Sep<span class="course-date-extra">tember</span> 2014</time>
+                                    <span class="pill pill--button">Apply</span>
+                                </a>
+                            </li>
+                          
+                        </ul>
+                    </article>
+
+
+    <article class="sidebar__item box--alt box--alt--small box--alt--rounded">
+                        <h3>Timing and access</h3>
+                        <ul class="sidebar__item__list">
+                            <li>
+                                <span aria-hidden="true" class="icon icon-hours"></span>
+                                 <span tal:content="coursepage/get_learninghours|nothing" />
+                            </li>
+                            <li class="tags__item--method">
+                                <span aria-hidden="true" class="icon icon-online"></span>
+                                Online
+                            </li>
+                            <li>
+                                <span aria-hidden="true" class="icon icon-duration"></span>
+                                 <span tal:content="coursepage/get_courseduration|nothing" />
+                            </li>
+                            <li>
+                                <span aria-hidden="true" class="icon icon-location"></span>
+                                <a href="https://www.google.co.uk/maps/@51.517335,-0.1310322,17z" class="map-link blue-link" target="_blank">21-43 Tottenham Court Road, London, N1 3LP</a>
+                            </li>
+                        </ul>
+      </article>
+
+      <article class="sidebar__item box--alt box--alt--small box--alt--rounded course-contact">
+                        <h3>Contact information</h3>
+                        <ul class="sidebar__item__list">
+                            <li>
+                                <span aria-hidden="true" class="icon icon-user"></span>
+                                <span tal:content="coursepage/get_adminname|nothing" />
+                            </li>
+                            <li>
+                                <span aria-hidden="true" class="icon icon-mail"></span>
+                                <a tal:attributes="href string:mailto:${coursepage/get_adminemail}" class="force-wrap"><span tal:content="coursepage/get_adminemail|nothing" /></a>
+                            </li>
+                            <li>
+                                <span aria-hidden="true" class="icon icon-phone"></span>
+                                <a tal:attributes="href string:tel:${coursepage/get_admintelephone|nothing}" >
+                                  <span tal:content="coursepage/get_admintelephone|nothing" /></a>
+                            </li>
+                          
+                        </ul>
+      </article>
+
+      
+ </div>
+
+</section>    
 </tal:comp>

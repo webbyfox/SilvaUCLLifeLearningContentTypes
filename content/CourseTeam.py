@@ -43,7 +43,7 @@ class CourseTeam(Content, SimpleItem):
         self._fullname = ""
         self._description = ""
         self._image = ""
-        self.iris_link = ""
+        self._iris_link = ""
 
 
     security.declareProtected(SilvaPermissions.AccessContentsInformation,'can_set_title')

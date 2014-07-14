@@ -28,7 +28,7 @@
            <required type="int">1</required>   
            <css_class></css_class>   
            <default></default>   
-           <title>PageId</title>   
+           <title></title>   
            <truncate type="int">0</truncate>   
            <description>This field cannot be edited</description>    
            <unicode>0</unicode>    
@@ -47,11 +47,11 @@
            <height type="int">1</height>
            <required type="int">1</required>   
            <css_class></css_class>   
-           <default>/default>   
-           <title>Page Title</title>   
+           <default></default>   
+           <title></title>   
            <truncate type="int">0</truncate>   
            <description>Add course title here</description>    
-           <unicode>0/unicode>    
+           <unicode>0</unicode>    
          </values>   
          <tales>   
          </tales>    

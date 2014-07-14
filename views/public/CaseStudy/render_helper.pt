@@ -68,7 +68,7 @@
                 <li  tal:repeat="announcements 
                           python:context.service_catalog( 
                           meta_type={'query':'Anouncement Version'},
-                          path={'query' : '/Silva/lifelearning', 'depth' :0},
+                          path={'query' : '/silva/lifelearning', 'depth' :0},
                           version_status = 'public')[:3]" 
                          itemscope="" 
                          itemtype="http://schema.org/Article" 
