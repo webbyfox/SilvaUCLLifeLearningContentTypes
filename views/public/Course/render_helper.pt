@@ -75,26 +75,21 @@
 
            <div class="course-teacher box--alt tagged">
                   <div class="tag">Course team</div>
-          <tal:courseteam 
-               repeat="courseteam python:context.service_catalog(meta_type='Course Team',
-                                path='/'.join(container.getPhysicalPath()), )">
-            <tal:teamcontent define="courseteam python:courseteam.getObject()" >
+                    <tal:repeat repeat="object python:request.model.objectValues()"> 
+                        <tal:content define="courseteam python:object.get_silva_object()"
+                                      condition="python:courseteam.meta_type=='Course Team'" >
 
-              
-                  <div class="media">
-                      <a href="#">
-                          <img tal:attributes="src python:courseteam.get_image() or '/images/default-avatar.jpg'" alt="" class="media__aside">
-                      </a>
-                      <div class="media__body">
-                          <h3><tal:content content="courseteam/get_fullname" /></h3>
-                          <p><tal:content content="structure courseteam/get_description"/></p>
-                      </div>
-                 
-                  </div>
-
-          </tal:teamcontent>
-
-          </tal:courseteam>
+                          <div class="media">
+                                        <a href="#">
+                                            <img tal:attributes="src python:courseteam.get_image() or '/images/default-avatar.jpg'" alt="" class="media__aside">
+                                        </a>
+                                        <div class="media__body">
+                                            <h3><tal:content content="courseteam/get_fullname" /></h3>
+                                            <p><tal:content content="structure courseteam/get_description"/></p>
+                                        </div>
+                            </div>
+                          </tal:content>
+                  </tal:repeat>
 
                   
               </div> 
@@ -104,36 +99,54 @@
         
 
 
-
-
-
-
-
-
 <tal:repeat repeat="static_object python:request.model.objectValues()"> 
-      <tal:learning-outcome tal:condition="python:static_object.getId()=='faq'"
+      <tal:learning-outcome tal:condition="python:static_object.getId()=='learning-outcomes'"
                             tal:define="container request/model;
                                     model python:context;
                                     title model/get_title;
                                     version python:static_object.get_viewable() or static_object.get_editable();">
           <div class="box--alt">
-                <h3>Frequently asked questions</h3>
+                <h3>Learning outcomes</h3>
                 <p tal:content="structure version/content|nothing" />
           </div>
 
       </tal:learning-outcome>
+</tal:repeat>
 
-      <tal:faqs tal:condition="python:static_object.getId()== 'learning-outcomes'"
+<tal:repeat repeat="static_object python:request.model.objectValues()"> 
+      <tal:faqs tal:condition="python:static_object.getId()=='faq'"
                             tal:define="container request/model;
                                     model python:context;
                                     title model/get_title;
                                     version python:static_object.get_viewable() or static_object.get_editable();">
        <div class="box--alt">
-         <h3>Learning outcomes</h3>
+         <h3>Frequently asked questions</h3>
                <p tal:content="structure version/content|nothing" />
       </div>
       </tal:faqs>
 </tal:repeat>
+
+
+<div class="student-review box--alt tagged">
+                  <div class="tag">Student review</div>
+                    <tal:repeat repeat="object python:request.model.objectValues()"> 
+                        <tal:content define="object python:object.get_silva_object()"
+                                      condition="python:object.meta_type=='Review'" >
+
+                          <div class="media">
+                                        <a href="#">
+                                            <img tal:attributes="src python:object.get_reviewmemberimagepath() or '/images/default-avatar.jpg'" alt="" class="media__aside">
+                                        </a>
+                                        <div class="media__body">
+                                            <h3><tal:content content="object/get_reviewmembertitle" /></h3>
+                                            <p><tal:content content="structure object/get_reviewmemberdescription"/></p>
+                                        </div>
+                            </div>
+                          </tal:content>
+                  </tal:repeat>
+
+                  
+              </div> 
 
 
 
@@ -174,15 +187,36 @@
                                     <span class="pill pill--button">Apply</span>
                                 </a>
                             </li>
+                            <tal:content define="global x python:[]">
+                                <tal:repeat repeat="object python:request.model.objectValues()" > 
+                                    <tal:content condition="python:object.get_silva_object().meta_type=='Course Date'">
+                                        <tal:define
+                                                    define="x python:x.append([object.get_coursedate(),object.get_applylink()])" />
+                                                  </tal:content>
+                                      </tal:repeat>
+                                      <tal:con define="m python:x.sort()" />
+                                      <li tal:repeat="x x" class="course-dates__list__item">
+                                        <a tal:attributes="href python:x[1]">
+                                         
+                                        <time tal:attributes="datetime python:x[0]"
+                                              tal:content="python:x[0].strftime('%d %B %Y')" /> 
+                                        <span class="pill pill--button">Apply</span>
+                                      </a>
+                                      </li>
+
+                            </tal:content>
+                            <!--
                             <li class="course-dates__list__item">
                                 <a href="#">
                                     <time datetime="2014-09-10">10th Sep<span class="course-date-extra">tember</span> 2014</time>
                                     <span class="pill pill--button">Apply</span>
                                 </a>
                             </li>
-                          
+                          -->
                         </ul>
                     </article>
+
+
 
 
     <article class="sidebar__item box--alt box--alt--small box--alt--rounded">
